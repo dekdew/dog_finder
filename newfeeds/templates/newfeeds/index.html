@@ -1,0 +1,9 @@
+{% extends 'newfeeds/base.html' %}
+
+{% block content %}
+{% for post in posts %}
+    <h1>{{ post.post_title }}</h1>
+    <p>By {{ post.owner }} on {{ post.date_time }}</p>
+    <p>{{ post.post_detail }}</p>
+{% endfor %}
+{% endblock content %}

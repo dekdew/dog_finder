@@ -2,26 +2,14 @@ from django.http import HttpResponse
 from django.shortcuts import render
 
 
-posts = [
-    {
-        'owner': 'Khing',
-        'post_title': 'Blog1',
-        'post_detail': 'First Post Content',
-        'date_time': 'August 28, 2019'
-    },
-{
-        'owner': 'Khing2',
-        'post_title': 'Blog2',
-        'post_detail': 'Second Post Content',
-        'date_time': 'August 29, 2019'
-    }
-]
-
 # Create your views here.
+from newfeeds.models import Post
+
+
 def index(req):
-    context = {'posts': posts}
+    context = {'posts': Post.objects.all()}
     return render(req, 'newfeeds/index.html', context=context)
 
-def post(req):
+def about(req):
 
-    return render(req, 'newfeeds/post.html', {'title': 'Post About'})
+    return render(req, 'newfeeds/about.html', {'title': 'Post About'})

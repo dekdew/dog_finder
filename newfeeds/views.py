@@ -1,27 +1,49 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
-
-posts = [
-    {
-        'owner': 'Khing',
-        'post_title': 'Blog1',
-        'post_detail': 'First Post Content',
-        'date_time': 'August 28, 2019'
-    },
-{
-        'owner': 'Khing2',
-        'post_title': 'Blog2',
-        'post_detail': 'Second Post Content',
-        'date_time': 'August 29, 2019'
-    }
+post_list = [
+  {
+    'owner': 'Khing',
+    'dog_name': 'Tommy',
+    'date': 'August 28, 2019',
+    'image': 'demo-image-01',
+    'breed': 'Dachshund',
+    'gender': 'male',
+    'age': 2,
+    'colors': [
+      'black',
+      'brown',
+    ],
+    'lat': '13.729896',
+    'lon': '100.779320',
+    'location': 'Kmitl',
+  },
+  {
+    'owner': 'Few',
+    'dog_name': 'Apple',
+    'post_title': 'Blog2',
+    'post_detail': 'Second Post Content',
+    'date': 'August 29, 2019',
+    'image': 'demo-image-02',
+    'breed': 'Corgi',
+    'gender': 'female',
+    'age': 1,
+    'colors': [
+      'brown',
+      'white',
+    ],
+    'lat': '6.999079',
+    'lon': '100.472488',
+    'location': 'Hadyai',
+  }
 ]
+
 
 # Create your views here.
 def index(req):
-    context = {'posts': posts}
-    return render(req, 'newfeeds/index.html', context=context)
+  context = {'post_list': post_list}
+  return render(req, 'newfeeds/index.html', context=context)
+
 
 def post(req):
-
-    return render(req, 'newfeeds/post.html', {'title': 'Post About'})
+  return render(req, 'newfeeds/post.html', {'title': 'Post About'})

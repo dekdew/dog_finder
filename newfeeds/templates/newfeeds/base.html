@@ -3,17 +3,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-   {% if title %}
-        <title>Dog Finder {{ title }}</title>
+    {% if title %}
+        <title>DogFinder - {{ title }}</title>
     {% else %}
-    <title>Dog Finder</title>
+        <title>DogFinder</title>
     {% endif %}
 
-    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/fontawesome-free/css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/grayscale.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        {% block content %}{% endblock %}
-    </div>
+<div>
+    {% block content %}{% endblock %}
+</div>
 </body>
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+<script src="{% static 'js/grayscale.min.js' %}"></script>
 </html>

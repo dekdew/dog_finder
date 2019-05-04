@@ -283,3 +283,20 @@ footer {
     background-repeat: no-repeat;
     background-position: center;
 }
+
+/* login */
+.login,
+.image {
+    min-height: 100vh;
+}
+
+.login-heading {
+    font-weight: 300;
+}
+
+.bg-image {
+    background-image: url("../img/bg_login.svg") !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}

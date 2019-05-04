@@ -48,10 +48,45 @@
                 {{ user.username }}
             </h2>
             <p>
-                {{ user.email }}
+                {{ user.email }} : {{ user.profile.owner_phone }}
             </p>
         </div>
     </div>
 
+</div>
+
+<div class="container-fluid">
+    <div class="row no-gutter">
+        <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image bg-warning"></div>
+        <div class="col-md-8 col-lg-6">
+            <div class="login d-flex align-items-center py-5">
+                <div class="container">
+                    <div class="mx-5">
+
+                            {% if messages %}
+                            {% for msg in messages %}
+
+                                <div class="alert alert-{{ msg.tags }}">
+                                    {{ msg }}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <fieldset class="form-group">
+                                <legend class="border-bottom mb-4">Update Your Profile</legend>
+                                {{ user_form | crispy }}
+                                {{ profile_form | crispy }}
+                            </fieldset>
+                            <div class="form-group">
+                                <button class="btn btn-warning text-white btn-block" type="submit">Update</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </body>

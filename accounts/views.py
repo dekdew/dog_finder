@@ -17,7 +17,7 @@ def register(req):
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
-            messages.success(req, f'Account created for {username}')
+            messages.success(req, 'Account created for {username}')
             return redirect('index')
     else:
         form = UserRegisterForms()

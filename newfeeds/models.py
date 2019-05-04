@@ -52,11 +52,6 @@ class Post(models.Model):
 #     dog = models.ForeignKey(Dog, on_delete=models.CASCADE)
 #
 #
-# class DogColor(models.Model):
-#     color_name = models.CharField(max_length=30)
-#     dog = models.ForeignKey(Dog, on_delete=models.CASCADE, null=True)
-#     dog_found = models.ForeignKey(DogFound, on_delete=models.CASCADE, null=True)
-#
-#
+
 # class Comment(models.Model):
 #     date_time = models.DateTimeField(auto_now_add=True)

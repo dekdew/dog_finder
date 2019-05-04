@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.views.generic import ListView
 
 post_list = [
   {
@@ -49,6 +50,11 @@ def index(req):
 #
 #     context = {'posts': Post.objects.all()}
 #     return render(req, 'newfeeds/index.html', context=context)
+
+
+class PostListView(ListView):
+    model = Post
+    template_name = 'newfeeds/index.html'
 
 
 def about(req):

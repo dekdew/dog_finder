@@ -49,3 +49,9 @@ class Dog(models.Model):
     dog_age = models.IntegerField(default=0)
     qr_code = models.TextField()
     owner = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
+
+
+class DogColor(models.Model):
+    color_name = models.CharField(max_length=30)
+    dog = models.ForeignKey(Dog, on_delete=models.CASCADE, null=True)
+

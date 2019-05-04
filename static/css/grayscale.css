@@ -4,6 +4,10 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-grayscale/blob/master/LICENSE)
  */
 
+* {
+    font-family: 'Varela Round';
+}
+
 #mainNav {
     min-height: 56px;
     background-color: #fff;
@@ -61,7 +65,7 @@
     #mainNav .nav-link {
         -webkit-transition: none;
         transition: none;
-        padding: 2rem 1.5rem;
+        padding: 0 1.5rem;
         color: #fffc;
     }
 

@@ -75,4 +75,4 @@ def profile(req):
         'user_form': user_form,
         'profile_form': profile_form
     }
-    return render(req, 'accounts/profile.html', context=context)
+    return render(req, 'accounts/edit-profile.html', context=context)

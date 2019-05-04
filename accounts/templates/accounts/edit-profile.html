@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'vendor/fontawesome-free/css/all.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/grayscale.css' %}">
-
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
     <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
           rel="stylesheet">
@@ -93,7 +93,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-info"
                          aria-labelledby="navbarDropdownMenuLink-4">
-                        <a class="dropdown-item" href="{% url 'profile' %}">My Profile</a>
+                        <a class="dropdown-item" href="{% url 'edit_profile' %}">Edit Profile</a>
                         <a class="dropdown-item" href="{% url 'logout' %}">Log out</a>
                     </div>
                 </li>
@@ -103,42 +103,77 @@
     </div>
 </nav>
 
-<div class="container-fluid">
-    <div class="row no-gutter">
-        <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image bg-warning"></div>
-        <div class="col-md-8 col-lg-6">
-            <div class="login d-flex align-items-center py-5">
-                <div class="container">
-                    <div class="mx-5">
-
-                            {% if messages %}
-                            {% for msg in messages %}
-
-                                <div class="alert alert-{{ msg.tags }}">
-                                    {{ msg }}
-                                </div>
-                            {% endfor %}
-                        {% endif %}
-                        <form method="post" enctype="multipart/form-data">
-                            {% csrf_token %}
-                            <fieldset class="form-group">
-                                <legend class="border-bottom mb-4">Update Your Profile</legend>
-                                {{ user_form | crispy }}
-                                {{ profile_form | crispy }}
-                            </fieldset>
-                            <div class="form-group">
-                                <button class="btn btn-warning text-white btn-block" type="submit">Update</button>
+<div class="profile-page">
+    <div class="page-header header-filter" data-parallax="true"></div>
+    <div class="main main-raised">
+        <div class="profile-content pb-5 mb-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 ml-auto mr-auto">
+                        <div class="profile">
+                            <div class="avatar">
+                                <img src="{{ user.profile.image.url }}"
+                                     alt="Circle Image" class="img-raised rounded-circle img-fluid">
                             </div>
-                        </form>
+                            <div class="name">
+                                <h3 class="title text-capitalize">{{ user.first_name }} {{ user.last_name }}</h3>
 
+                                <form method="post" class="text-left" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <fieldset class="form-group">
+                                        {{ user_form | crispy }}
+                                        {{ profile_form | crispy }}
+                                    </fieldset>
+                                    <div class="form-group">
+                                        <button class="btn btn-warning text-white btn-block" type="submit">
+                                            Update profile
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        {#<div class="container-fluid">#}
+        {#    <div class="row no-gutter">#}
+        {#        <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image bg-warning"></div>#}
+        {#        <div class="col-md-8 col-lg-6">#}
+        {#            <div class="login d-flex align-items-center py-5">#}
+        {#                <div class="container">#}
+        {#                    <div class="mx-5">#}
+        {##}
+        {#                        {% if messages %}#}
+        {#                            {% for msg in messages %}#}
+        {##}
+        {#                                <div class="alert alert-{{ msg.tags }}">#}
+        {#                                    {{ msg }}#}
+        {#                                </div>#}
+        {#                            {% endfor %}#}
+        {#                        {% endif %}#}
+        {#                        <form method="post" enctype="multipart/form-data">#}
+        {#                            {% csrf_token %}#}
+        {#                            <fieldset class="form-group">#}
+        {#                                <legend class="border-bottom mb-4">Update Your Profile</legend>#}
+        {#                                {{ user_form | crispy }}#}
+        {#                                {{ profile_form | crispy }}#}
+        {#                            </fieldset>#}
+        {#                            <div class="form-group">#}
+        {#                                <button class="btn btn-warning text-white btn-block" type="submit">Update</button>#}
+        {#                            </div>#}
+        {#                        </form>#}
+        {##}
+        {#                    </div>#}
+        {#                </div>#}
+        {#            </div>#}
+        {#        </div>#}
+        {#    </div>#}
+        {#</div>#}
     </div>
-</div>
-</body>
-<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
-<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-<script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+    <script src="{% static 'js/grayscale.min.js' %}"></script>
 </html>

@@ -7,7 +7,7 @@ from django.shortcuts import render, redirect
 
 
 # Create your views here.
-from accounts.forms import UserRegisterForms
+from accounts.forms import UserRegisterForms, UserUpdateForms, ProfileUpdateForm
 
 
 def register(req):
@@ -38,7 +38,7 @@ def my_login(req):
             next_url = req.POST.get('next_url')
             if next_url:
                 return redirect(next_url)
-            return redirect('index')
+            return redirect('profile')
         else:
             context['username'] = username
             context['password'] = password
@@ -57,5 +57,22 @@ def my_logout(req):
 
 @login_required
 def profile(req):
+    if req.method == 'POST':
+        user_form = UserUpdateForms(req.POST, instance=req.user)
+        profile_form = ProfileUpdateForm(req.POST, req.FILES, instance=req.user.profile)
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            messages.success(req, f'Your account has been update!')
+            return redirect('profile')
+    else:
+        user_form = UserUpdateForms(instance=req.user)
+        profile_form = ProfileUpdateForm(instance=req.user.profile)
+        storage = messages.get_messages(req)
+        storage.used = True
 
-    return render(req, 'accounts/profile.html')
+    context = {
+        'user_form': user_form,
+        'profile_form': profile_form
+    }
+    return render(req, 'accounts/profile.html', context=context)

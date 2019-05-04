@@ -7,6 +7,8 @@ from django.db import models
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(default='default.jpg', upload_to='profile_img')
+    owner_phone = models.CharField(max_length=20, default='08x-xxx-xxxx')
+    owner_address = models.TextField(default='default Address')
 
     def __str__(self):
         return f'{self.user.username} Profile'

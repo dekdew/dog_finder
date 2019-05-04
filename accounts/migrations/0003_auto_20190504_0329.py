@@ -12,16 +12,9 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='owner',
-            name='user',
-        ),
         migrations.AlterField(
             model_name='dog',
             name='owner',
             field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL),
-        ),
-        migrations.DeleteModel(
-            name='Owner',
-        ),
+        )
     ]

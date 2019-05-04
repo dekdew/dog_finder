@@ -3,11 +3,13 @@ from django.db import models
 
 # Create your models here
 
-#
-# class DogOwner(models.Model):
-#     owner_phone = models.CharField(max_length=15)
-#     owner_address = models.TextField()
-#     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True, null=False)
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    image = models.ImageField(default='default.jpg', upload_to='profile_img')
+
+    def __str__(self):
+        return f'{self.user.username} Profile'
 
 
 class Dog(models.Model):

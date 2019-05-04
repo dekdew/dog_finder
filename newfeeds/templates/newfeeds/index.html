@@ -36,11 +36,18 @@
             </div>
         </div>
     </nav>
-
     <!-- Header -->
     <header class="masthead">
         <div class="container d-flex h-100 align-items-center">
             <div class="mx-auto text-center">
+{#                {% if messages %}#}
+{#        {% for msg in messages %}#}
+{#            <div class="message alert alert-{{ msg.tags }}">#}
+{#            {{ msg }}#}
+{#            <a onclick="del()" class="del-msg">&times;</a>#}
+{#            </div>#}
+{#        {% endfor %}#}
+{#    {% endif %}#}
                 <h1 class="mx-auto my-0">DogFinder</h1>
                 <h2 class="text-white-50 mx-auto mt-2 mb-5">Lorem ipsum dolor sit amet.</h2>
                 <a href="#post" class="text-white-1 js-scroll-trigger"><i class="fas fa-chevron-down"></i> View
@@ -171,5 +178,18 @@
     {#        <p>By {{ post.owner }} on {{ post.date_time }}</p>#}
     {#        <p>{{ post.post_detail }}</p>#}
     {#    {% endfor %}#}
+{#    <script>#}
+{#    $(document).ready(function() {#}
+{#        // messages timeout for 10 sec#}
+{#        setTimeout(function() {#}
+{#            $('.message').fadeOut('slow');#}
+{#        }, 5000); // <-- time in milliseconds, 1000 =  1 sec#}
+{##}
+{#        // delete message#}
+{#        function del() {#}
+{#            $('.del-msg').parent().attr('style', 'display:none;');#}
+{#        }#}
+{#    });#}
+{#</script>#}
 
 {% endblock content %}

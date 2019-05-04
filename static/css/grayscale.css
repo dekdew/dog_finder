@@ -303,3 +303,7 @@ footer {
     background-size: cover;
     background-position: center;
 }
+
+.sticky-top {
+    top: 5em;
+}

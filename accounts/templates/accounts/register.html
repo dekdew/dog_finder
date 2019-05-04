@@ -1,12 +1,63 @@
-{% extends 'newfeeds/base.html' %}
+<!DOCTYPE html>
+{% load static %}
+{% load crispy_forms_tags %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% if title %}
+        <title>DogFinder - {{ title }}</title>
+    {% else %}
+        <title>DogFinder</title>
+    {% endif %}
 
-{% block content %}
-    <div class="content-section">
-        <form method="post">
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/fontawesome-free/css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/grayscale.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body>
+    <header class="site-header">
+  <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+    <div class="container">
+      <a class="navbar-brand mr-4" href="{% url 'index' %}">Dog Finder</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarToggle">
+        <div class="navbar-nav mr-auto">
+          <a class="nav-item nav-link" href="{% url 'index' %}">Home</a>
+          <a class="nav-item nav-link" href="{% url 'about' %}">About</a>
+        </div>
+        <!-- Navbar Right Side -->
+        <div class="navbar-nav">
+          <a class="nav-item nav-link" href="#">Login</a>
+          <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+    <main role="main" class="container">
+        <div class="row">
+            <div class="col-md-8">
+                {% if messages %}
+                    {% for msg in messages %}
+
+                        <div class="alert alert-{{ msg.tags }}">
+                            {{ msg }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                <div class="content-section">
+        <form method="post" action="{% url 'register' %}">
             {% csrf_token %}
             <fieldset class="form-group">
                 <legend class="border-bottom mb-4">Join with US</legend>
-                {{ form.as_p }}
+                {{ form | crispy }}
             </fieldset>
             <div class="form-group">
                 <button class="btn btn-outline-info" type="submit">Sign Up</button>
@@ -14,8 +65,23 @@
         </form>
         <div class="border-top pt-3">
             <small class="text-muted">
-                Already Have an Account? <a href="#" class="ml-2">Sign In</a>
+                Already Have an Account? <a href="{% url 'login' %}" class="ml-2">Sign In</a>
             </small>
         </div>
     </div>
-{% endblock %}
+            </div>
+            <div class="col-md-4">
+                <div class="content-section">
+                    <h3>Sidebar</h3>
+                    <p class="text-muted">Put Information here</p>
+                    <ul class="list-group">
+                        <li class="list-group-item list-group-item-light">Lastes Post</li>
+                        <li class="list-group-item list-group-item-light">Anoucement</li>
+                        <li class="list-group-item list-group-item-light">etc.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+

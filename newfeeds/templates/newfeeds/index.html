@@ -1,16 +1,175 @@
 {% extends 'newfeeds/base.html' %}
 
+{% load static %}
+
 {% block content %}
-{% for post in posts %}
-    <article class="media content-section">
-  <div class="media-body">
-    <div class="article-metadata">
-      <a class="mr-2" href="#">{{ post.user }}</a>
-      <small class="text-muted">{{ post.date_time|date:"F d, Y" }}</small>
-    </div>
-    <h2><a class="article-title" href="#">{{ post.post_title }}</a></h2>
-    <p class="article-content">{{ post.post_detail }}</p>
-  </div>
-</article>
-{% endfor %}
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="">DogFinder</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                    data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    {% if user.is_authenticated %}
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+                    </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Log in</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'register' %}">Sign Up</a>
+                    </li>
+                    {% endif %}
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="masthead">
+        <div class="container d-flex h-100 align-items-center">
+            <div class="mx-auto text-center">
+                <h1 class="mx-auto my-0">DogFinder</h1>
+                <h2 class="text-white-50 mx-auto mt-2 mb-5">Lorem ipsum dolor sit amet.</h2>
+                <a href="#post" class="text-white-1 js-scroll-trigger"><i class="fas fa-chevron-down"></i> View
+                    posts</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Feature Section -->
+    <section class="bg-black py-5 text-center feature-section">
+        <h2 class="text-white">What do you want to do?</h2>
+        <hr class="mb-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <div class="card py-4 h-100">
+                        <div class="card-body text-center">
+                            <img src="{% static 'img/register_dog.svg' %}" class="mb-4">
+                            <a href="" class="text-uppercase m-0 btn text-dark btn-outline-warning btn-lg btn-block">Register
+                                your dog</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <div class="card py-4 h-100">
+                        <div class="card-body text-center">
+                            <img src="{% static 'img/lost_dog.svg' %}" class="mb-4">
+                            <a href="" class="text-uppercase m-0 btn text-dark btn-outline-warning btn-lg btn-block">Lost
+                                your dog</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <div class="card py-4 h-100">
+                        <div class="card-body text-center">
+                            <img src="{% static 'img/found_dog.svg' %}" class="mb-4">
+                            <a href="" class="text-uppercase m-0 btn text-dark btn-outline-warning btn-lg btn-block">Found
+                                dog</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Post Section -->
+    <section id="post" class="post-section bg-light py-5 text-center">
+        <h2>We miss our boss :(</h2>
+        <hr class="mb-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9">
+                    <!-- Lost and Found Tab -->
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <a class="nav-item nav-link active" id="nav-lost-tab" data-toggle="tab" href="#nav-home"
+                               role="tab"
+                               aria-controls="nav-lost" aria-selected="true">Lost</a>
+                            <a class="nav-item nav-link" id="nav-found-tab" data-toggle="tab" href="#nav-profile"
+                               role="tab"
+                               aria-controls="nav-found" aria-selected="false">Found</a>
+                        </div>
+                    </nav>
+                    <!-- Inside Tab -->
+                    <div class="tab-content card" id="nav-tabContent">
+                        <div class="tab-pane fade show active p-5" id="nav-home" role="tabpanel"
+                             aria-labelledby="nav-lost-tab">
+                            {% for post in post_list %}
+                                <div class="post row justify-content-center no-gutters mb-4">
+                                    <div class="post-image col-lg-7" style="background-image: url('{% static 'img/'|add:post.image|add:'.jpg' %}');"></div>
+                                    <div class="post-content col-lg-5">
+                                        <div class="card bg-dark text-left h-100 text-white">
+                                            <div class="card-header">
+                                                <h4 class="card-title">
+                                                    {{ post.dog_name }}
+                                                    {% if post.gender == 'male' %}
+                                                        <i class="fas fa-mars text-blue"></i>
+                                                    {% else %}
+                                                        <i class="fas fa-venus text-pink"></i>
+                                                    {% endif %}
+                                                </h4>
+                                                <h6 class="card-subtitle mb-2 text-muted">
+                                                    <i class="fas fa-low-vision"></i>
+                                                    {{ post.date }}
+                                                </h6>
+                                            </div>
+                                            <div class="card-body">
+                                                <p class="card-text"><span class="text-muted">
+                                                    Breed:</span> {{ post.breed }}
+                                                </p>
+                                                <p class="card-text"><span class="text-muted">
+                                                    Age:</span> {{ post.age }} years old
+                                                </p>
+                                                <p class="card-text"><span class="text-muted">
+                                                    Owner:</span> {{ post.owner }}
+                                                </p>
+                                                <p class="card-text"><span class="text-muted">
+                                                    Colors:</span> {{ post.colors }}
+                                                </p>
+                                            </div>
+                                            <div class="card-footer">
+                                                <i class="fas fa-map-marker-alt text-muted"></i>
+                                                {{ post.location }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div class="tab-pane fade p-5" id="nav-profile" role="tabpanel" aria-labelledby="nav-found-tab">
+                            Found
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3">
+                    <div class="card h-100"></div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    {#    {% for post in posts %}#}
+    {#        <h1>{{ post.post_title }}</h1>#}
+    {#        <p>By {{ post.owner }} on {{ post.date_time }}</p>#}
+    {#        <p>{{ post.post_detail }}</p>#}
+    {#    {% endfor %}#}
+
 {% endblock content %}

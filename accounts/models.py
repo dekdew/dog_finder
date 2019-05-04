@@ -3,11 +3,11 @@ from django.db import models
 
 # Create your models here
 
-
-class Owner(models.Model):
-    owner_phone = models.CharField(max_length=15)
-    owner_address = models.TextField()
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+#
+# class DogOwner(models.Model):
+#     owner_phone = models.CharField(max_length=15)
+#     owner_address = models.TextField()
+#     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True, null=False)
 
 
 class Dog(models.Model):
@@ -33,4 +33,4 @@ class Dog(models.Model):
     dog_dob = models.DateField(null=True, blank=True)
     dog_age = models.IntegerField(default=0)
     qr_code = models.TextField()
-    owner = models.ForeignKey(Owner, on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, null=False)

@@ -11,7 +11,7 @@ GENDER = (
 
 
 class Post(models.Model):
-    date_time = models.DateTimeField(default=timezone.now)
+    date = models.DateTimeField(default=timezone.now)
     post_title = models.CharField(max_length=100)
     post_detail = models.TextField()
 
@@ -31,7 +31,7 @@ class Post(models.Model):
         (DOG_FOUND, 1)
     )
     types = models.CharField(choices=TYPES, null=False, blank=False, max_length=2)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    ower = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.post_title

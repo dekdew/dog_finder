@@ -22,7 +22,7 @@
 }
 
 #mainNav .navbar-brand {
-    color: #161616;
+    fill: #161616;
     font-weight: 700;
     padding: .9rem 0;
 }
@@ -50,11 +50,12 @@
         background-color: transparent;
         -webkit-transition: background-color 0.3s ease-in-out;
         transition: background-color 0.3s ease-in-out;
+        box-shadow: unset;
     }
 
     #mainNav .navbar-brand {
         padding: .5rem 0;
-        color: #fff;
+        fill: #fff;
     }
 
     #mainNav .nav-link {
@@ -78,7 +79,7 @@
     }
 
     #mainNav.navbar-shrink .navbar-brand {
-        color: #161616;
+        fill: #161616;
     }
 
     #mainNav.navbar-shrink .nav-link {
@@ -280,5 +281,22 @@ footer {
     min-height: 300px;
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* login */
+.login,
+.image {
+    min-height: 100vh;
+}
+
+.login-heading {
+    font-weight: 300;
+}
+
+.bg-image {
+    background-image: url("../img/bg_login.svg") !important;
+    background-repeat: no-repeat;
+    background-size: cover;
     background-position: center;
 }

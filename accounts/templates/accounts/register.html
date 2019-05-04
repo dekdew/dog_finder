@@ -24,23 +24,21 @@
         <div class="col-md-8 col-lg-6">
             <div class="login d-flex align-items-center py-5">
                 <div class="container">
-                    <div class="row">
-                        <div class="col-md-9 col-lg-8 mx-auto">
-                            <form method="post">
-                                {% csrf_token %}
-                                <fieldset class="form-group">
-                                    <legend class="border-bottom mb-4">Create your account</legend>
-                                    {{ form | crispy }}
-                                </fieldset>
-                                <div class="form-group">
-                                    <button class="btn btn-warning text-white btn-block" type="submit">Sign Up</button>
-                                </div>
-                            </form>
-                            <div class="text-center">
-                                <small class="text-muted text-center">
-                                    You already have an account? <a href="{% url 'login' %}" class="ml-2">Sign in</a>
-                                </small>
+                    <div class="mx-5">
+                        <form method="post">
+                            {% csrf_token %}
+                            <fieldset class="form-group">
+                                <legend class="border-bottom mb-4">Create your account</legend>
+                                {{ form | crispy }}
+                            </fieldset>
+                            <div class="form-group">
+                                <button class="btn btn-warning text-white btn-block" type="submit">Sign Up</button>
                             </div>
+                        </form>
+                        <div class="text-center">
+                            <small class="text-muted text-center">
+                                You already have an account? <a href="{% url 'login' %}" class="ml-2">Sign in</a>
+                            </small>
                         </div>
                     </div>
                 </div>

@@ -81,8 +81,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'dogFinder',
         'HOST': '127.0.0.1',
-        'USER': 'root',
-        'PASSWORD': 'cash$C0w',
+        'USER': 'dogfinder',
+        'PASSWORD': 'admin@dogfinder',
         'PORT': '3306'
     }
 }

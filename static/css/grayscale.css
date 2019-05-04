@@ -22,7 +22,7 @@
 }
 
 #mainNav .navbar-brand {
-    color: #161616;
+    fill: #161616;
     font-weight: 700;
     padding: .9rem 0;
 }
@@ -50,11 +50,12 @@
         background-color: transparent;
         -webkit-transition: background-color 0.3s ease-in-out;
         transition: background-color 0.3s ease-in-out;
+        box-shadow: unset;
     }
 
     #mainNav .navbar-brand {
         padding: .5rem 0;
-        color: #fff;
+        fill: #fff;
     }
 
     #mainNav .nav-link {
@@ -78,7 +79,7 @@
     }
 
     #mainNav.navbar-shrink .navbar-brand {
-        color: #161616;
+        fill: #161616;
     }
 
     #mainNav.navbar-shrink .nav-link {

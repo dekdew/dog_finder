@@ -25,9 +25,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('newfeeds.urls')),
     path('register/', accounts_views.register, name="register"),
-    path('login/', auth_views.LoginView.as_view(template_name='accounts/login.html'), name='login'),
+    path('login/', accounts_views.my_login, name='login'),
     path('logout/', accounts_views.my_logout, name='logout'),
-    path('profile/edit', accounts_views.profile, name='edit_profile')
+    path('my-profile/', accounts_views.my_profile, name='my_profile'),
+    path('my-profile/edit', accounts_views.edit_profile, name='edit_profile'),
 ]
 
 

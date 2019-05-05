@@ -197,7 +197,8 @@
                             {% for post in posts %}
                                 <div class="post row justify-content-center no-gutters mb-4">
                                     <div class="post-image col-lg-7"
-                                         style="background-image: {# url('{% static 'img/'|add:post.image|add:'.jpg' %}') #}
+                                         style="background-image:
+                                                 {# url('{% static 'img/'|add:post.image|add:'.jpg' %}') #}
                                                  url('{{ post.owner.dog_set.first.dog_image.url }}');"></div>
                                     <div class="post-content col-lg-5">
                                         <div class="card bg-dark text-left h-100 text-white">
@@ -226,8 +227,9 @@
                                                     Owner:</span> {{ post.owner.first_name }} {{ post.owner.last_name }}
                                                 </p>
                                                 <p class="card-text"><span class="text-muted">
-                                                    Colors:</span> {% for color in post.owner.dog_set.first.dogcolor_set.all %}
-                                                                    {{ color.color_name }} {% endfor %}
+                                                    Colors:</span>
+                                                    {% for color in post.owner.dog_set.first.dogcolor_set.all %}
+                                                        {{ color.color_name }} {% endfor %}
                                                 </p>
                                             </div>
                                             <div class="card-footer">
@@ -246,7 +248,7 @@
                 </div>
 
                 <div class="col-lg-3">
-                    <div class="card sticky-top h-25"></div>
+                    <div class="card sticky-top"></div>
                 </div>
             </div>
 

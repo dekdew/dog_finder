@@ -31,7 +31,7 @@ class Post(models.Model):
         (DOG_FOUND, 1)
     )
     types = models.CharField(choices=TYPES, null=False, blank=False, max_length=2)
-    ower = models.ForeignKey(User, on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.post_title

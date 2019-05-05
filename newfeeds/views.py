@@ -55,7 +55,7 @@ def index(req):
 class PostListView(ListView):
     model = Post
     template_name = 'newfeeds/index.html'
-
+    context_object_name = 'posts'
 
 def about(req):
 

@@ -25,6 +25,10 @@ class Profile(models.Model):
             img.save(self.image.path)
 
 
+class Breed(models.Model):
+    breed_name = models.CharField(max_length=100)
+
+
 class Dog(models.Model):
 
     MALE, FEMALE = 'Male', 'Female'
@@ -42,16 +46,19 @@ class Dog(models.Model):
 
     dog_status = models.CharField(choices=STATUS, default='Normal', max_length=20)
     dog_name = models.CharField(max_length=50)
-    dog_info = models.TextField()
-
+    dog_info = models.TextField(default='-')
     dog_gender = models.CharField(choices=GENDER, default='Male', max_length=10)
     dog_dob = models.DateField(null=True, blank=True)
     dog_age = models.IntegerField(default=0)
-    qr_code = models.TextField()
+    qr_code = models.TextField(default='-')
     owner = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
+    dog_image = models.ImageField(default='default.jpg', upload_to='dog_img')
+    breed = models.ForeignKey(Breed, on_delete=models.DO_NOTHING, null=False, default=1)
 
 
 class DogColor(models.Model):
     color_name = models.CharField(max_length=30)
-    dog = models.ForeignKey(Dog, on_delete=models.CASCADE, null=True)
+    dog = models.ForeignKey(Dog, on_delete=models.CASCADE, null=False)
+
+
 

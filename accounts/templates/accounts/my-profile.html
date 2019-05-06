@@ -180,7 +180,11 @@
                                                     <i class="fas fa-paw"></i>
                                                     {{ dog.dog_breed.breed_name }}
                                                 </h6>
-                                                <a href="{% url 'view_dog' dog.id %}">more</a>
+
+                                                <a class="mr-2 pr-2 border-right" href="{% url 'view_dog' dog.id %}"><i
+                                                        class="fas fa-info-circle"></i>
+                                                    more</a>
+                                                <a href=""><i class="fas fa-pen"></i> edit</a>
                                             </div>
                                         </div>
                                     </div>

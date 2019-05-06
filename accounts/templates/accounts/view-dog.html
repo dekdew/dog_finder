@@ -119,7 +119,7 @@
         <div class="profile-content pb-5 mb-5">
             <div class="container">
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-md-3">
                         <div class="profile card bg-light p-4 mt-3 sticky-top">
                             <div class="avatar">
                                 <img src="{{ dog.owner.profile.image.url }}"
@@ -145,27 +145,26 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 text-center p-5">
-                        <div class="row">
-                            <div class="col-12 p-3">
-                                <div class="post text-white bg-dark">
-                                    <div class="post-image"
-                                         style="background-image: url('{{ dog.dog_image.url }}');"></div>
-                                    <div class="card bg-dark text-left text-white">
-                                        <div class="card-body">
-                                            <h4>
-                                                {{ dog.dog_name }}
-                                                {% if dog.dog_gender == 'Male' %}
-                                                    <i class="fas fa-mars text-blue"></i>
-                                                {% else %}
-                                                    <i class="fas fa-venus text-pink"></i>
-                                                {% endif %}
-                                            </h4>
-                                            <h6 class="card-subtitle mb-2 text-muted">
-                                                <i class="fas fa-paw"></i>
-                                                {{ dog.dog_breed.breed_name }}
-                                            </h6>
-                                        </div>
+                    <div class="col-md-9 text-center">
+
+                        <div class="p-3">
+                            <div class="post text-white bg-dark">
+                                <div class="post-image"
+                                     style="background-image: url('{{ dog.dog_image.url }}');"></div>
+                                <div class="card bg-dark text-left text-white">
+                                    <div class="card-body">
+                                        <h4>
+                                            {{ dog.dog_name }}
+                                            {% if dog.dog_gender == 'Male' %}
+                                                <i class="fas fa-mars text-blue"></i>
+                                            {% else %}
+                                                <i class="fas fa-venus text-pink"></i>
+                                            {% endif %}
+                                        </h4>
+                                        <h6 class="card-subtitle mb-2 text-muted">
+                                            <i class="fas fa-paw"></i>
+                                            {{ dog.dog_breed.breed_name }}
+                                        </h6>
                                     </div>
                                 </div>
                             </div>

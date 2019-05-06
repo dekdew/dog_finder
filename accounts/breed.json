@@ -32,7 +32,8 @@
     "pk": 5,
     "fields": {
       "breed_name": "Bichon Frise"
-    },
+    }
+  },
   {
     "model": "accounts.Breed",
     "pk": 6,

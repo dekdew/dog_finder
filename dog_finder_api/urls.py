@@ -29,7 +29,8 @@ urlpatterns = [
     path('logout/', accounts_views.my_logout, name='logout'),
     path('my-profile/', accounts_views.my_profile, name='my_profile'),
     path('my-profile/edit/', accounts_views.edit_profile, name='edit_profile'),
-    path('register/dog', accounts_views.register_dog, name='dog_register')
+    path('register/dog/', accounts_views.register_dog, name='dog_register'),
+    path('dog/<int:dog_id>/', accounts_views.view_dog, name='view_dog'),
 ]
 
 

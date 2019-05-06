@@ -39,9 +39,11 @@ class DogRegisterForms(forms.ModelForm):
     dog_gender = forms.ChoiceField(choices=Dog.GENDER)
     dog_dob = forms.DateField(widget=forms.widgets.DateInput(attrs={'type': 'date'}))
     dog_age = forms.IntegerField()
+    dog_color = forms.CharField(max_length=50)
     dog_breed = forms.ChoiceField(choices=Breed.BREED)
     dog_status = forms.ChoiceField(choices=Dog.STATUS)
     dog_info = forms.CharField(widget=forms.Textarea)
+
 
     class Meta:
         model = Dog

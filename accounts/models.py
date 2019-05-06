@@ -76,6 +76,7 @@ class Dog(models.Model):
 
 
 class DogColor(models.Model):
+
     color_name = models.CharField(max_length=30)
     dog = models.ForeignKey(Dog, on_delete=models.CASCADE, null=False)
 

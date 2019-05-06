@@ -29,6 +29,7 @@ urlpatterns = [
     path('logout/', accounts_views.my_logout, name='logout'),
     path('my-profile/', accounts_views.my_profile, name='my_profile'),
     path('my-profile/edit', accounts_views.edit_profile, name='edit_profile'),
+    path('my-profile/dog-register', accounts_views.register_dog, name='dog_register')
 ]
 
 

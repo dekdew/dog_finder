@@ -83,7 +83,11 @@ DATABASES = {
         'HOST': '127.0.0.1',
         'USER': 'dogfinder',
         'PASSWORD': 'cash$C0w',
-        'PORT': '3306'
+        'PORT': '3306',
+        'ATOMIC_REQUESTS': True,
+        'OPTIONS': {
+            'connect_timeout': 99999999
+        }
     }
 }
 

@@ -26,6 +26,12 @@ class Profile(models.Model):
 
 
 class Breed(models.Model):
+    PUG, HUSKY, CORGI = "Pug", "Siberian Husky", "Corgi"
+    BREED = (
+        (PUG, 'Pug'),
+        (HUSKY, 'Siberian Husky'),
+        (CORGI, 'Corgi')
+    )
     breed_name = models.CharField(max_length=100)
 
 
@@ -54,6 +60,19 @@ class Dog(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
     dog_image = models.ImageField(default='default.jpg', upload_to='dog_img')
     breed = models.ForeignKey(Breed, on_delete=models.DO_NOTHING, null=False, default=1)
+
+    def __str__(self):
+        return f'{self.owner.username} {self.dog_name} Profile'
+
+    def save(self, *args, **kwargs):
+        super(Dog, self).save(*args, **kwargs)
+
+        img = Image.open(self.dog_image.path)
+
+        if img.height > 500 or img.width > 500:
+            output_size = (500, 500)
+            img.thumbnail(output_size)
+            img.save(self.dog_image.path)
 
 
 class DogColor(models.Model):

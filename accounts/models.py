@@ -61,7 +61,7 @@ class Dog(models.Model):
     dog_dob = models.DateField(null=True, blank=True)
     dog_info = models.TextField(default='-')
     dog_age = models.IntegerField(default=0)
-    dog_image = models.ImageField(default='default.jpg', upload_to='dog_img')
+    dog_image = models.ImageField(default='default-dog.jpg', upload_to='dog_img')
     qr_code = models.TextField(default='-')
     owner = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
     dog_status = models.CharField(choices=STATUS, default='Normal', max_length=20)
@@ -76,7 +76,7 @@ class Dog(models.Model):
 
         img = Image.open(self.dog_image.path)
 
-        if img.height > 500 or img.width > 500:
+        if img.height > 500 or img.width > 700:
             output_size = (500, 500)
             img.thumbnail(output_size)
             img.save(self.dog_image.path)

@@ -7,7 +7,7 @@ from django.shortcuts import render, redirect
 
 # Create your views here.
 from accounts.forms import UserRegisterForms, UserUpdateForms, ProfileUpdateForm, DogRegisterForms
-from accounts.models import Breed
+from accounts.models import Breed, Dog
 
 
 def register(req):
@@ -102,12 +102,12 @@ def edit_profile(req):
 
 @login_required
 def my_profile(req):
+    context = {}
+    user = req.user
     if req.method == 'POST':
         pass
     else:
-        pass
+        dog_list = Dog.objects.filter(owner=user)
+        context['dog_list'] = dog_list
 
-    context = {
-
-    }
     return render(req, 'accounts/my-profile.html', context=context)

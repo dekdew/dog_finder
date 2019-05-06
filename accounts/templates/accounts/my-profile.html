@@ -146,7 +146,8 @@
                                 <a href="{% url 'edit_profile' %}" class="btn btn-warning text-white btn-block my-2">
                                     Update profile
                                 </a>
-                                <a href="{% url 'dog_register' %}" class="btn btn-outline-warning btn-block text-dark my-2">
+                                <a href="{% url 'dog_register' %}"
+                                   class="btn btn-outline-warning btn-block text-dark my-2">
                                     <i class="fas fa-plus"></i>
                                     Register new dog
                                 </a>
@@ -159,45 +160,31 @@
 
                         <!-- My dogs -->
                         <div class="row">
-                            <!-- dog boy -->
-                            <div class="col-md-6 p-3">
-                                <div class="post text-white bg-dark">
-                                    <div class="post-image"
-                                         style="background-image: url('{% static 'img/demo-image-01.jpg' %}');"></div>
-                                    <div class="card bg-dark text-left text-white">
-                                        <div class="card-body">
-                                            <h4>
-                                                Tommy
-                                                <i class="fas fa-mars text-blue"></i>
-                                            </h4>
-                                            <h6 class="card-subtitle mb-2 text-muted">
-                                                <i class="fas fa-paw"></i>
-                                                Dachshund
-                                            </h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <!-- dog girl -->
-                            <div class="col-md-6 p-3">
-                                <div class="post text-white bg-dark">
-                                    <div class="post-image"
-                                         style="background-image: url('{% static 'img/demo-image-02.jpg' %}');"></div>
-                                    <div class="card bg-dark text-left text-white">
-                                        <div class="card-body">
-                                            <h4>
-                                                Apple
-                                                <i class="fas fa-venus text-pink"></i>
-                                            </h4>
-                                            <h6 class="card-subtitle mb-2 text-muted">
-                                                <i class="fas fa-paw"></i>
-                                                Corgi
-                                            </h6>
+                            {% for dog in dog_list %}
+                                <div class="col-md-6 p-3">
+                                    <div class="post text-white bg-dark">
+                                        <div class="post-image"
+                                             style="background-image: url('{{ dog.dog_image.url }}');"></div>
+                                        <div class="card bg-dark text-left text-white">
+                                            <div class="card-body">
+                                                <h4>
+                                                    {{ dog.dog_name }}
+                                                    {% if dog.dog_gender == 'Male' %}
+                                                        <i class="fas fa-mars text-blue"></i>
+                                                    {% else %}
+                                                        <i class="fas fa-venus text-pink"></i>
+                                                    {% endif %}
+                                                </h4>
+                                                <h6 class="card-subtitle mb-2 text-muted">
+                                                    <i class="fas fa-paw"></i>
+                                                    {{ dog.breed }}
+                                                </h6>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>

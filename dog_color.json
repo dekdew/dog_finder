@@ -1,0 +1,72 @@
+[
+  {
+    "model": "accounts.DogColor",
+    "pk": 1,
+    "fields": {
+      "color_name": "Black"
+    }
+  },
+  {
+    "model": "accounts.DogColor",
+    "pk": 2,
+    "fields": {
+      "color_name": "Brown"
+    }
+  },
+  {
+    "model": "accounts.DogColor",
+    "pk": 3,
+    "fields": {
+      "color_name": "White"
+    }
+  },
+  {
+    "model": "accounts.DogColor",
+    "pk": 4,
+    "fields": {
+      "color_name": "Gold"
+    }
+  },
+  {
+    "model": "accounts.DogColor",
+    "pk": 5,
+    "fields": {
+      "color_name": "Gray"
+    }
+  },
+  {
+    "model": "accounts.DogColor",
+    "pk": 6,
+    "fields": {
+      "color_name": "Cream"
+    }
+  },
+  {
+    "model": "accounts.DogColor",
+    "pk": 7,
+    "fields": {
+      "color_name": "Orange"
+    }
+  },
+  {
+    "model": "accounts.DogColor",
+    "pk": 8,
+    "fields": {
+      "color_name": "Red"
+    }
+  },
+  {
+    "model": "accounts.DogColor",
+    "pk": 9,
+    "fields": {
+      "color_name": "Black and White Dotted"
+    }
+  },
+  {
+    "model": "accounts.DogColor",
+    "pk": 10,
+    "fields": {
+      "color_name": "White and Red Dotted"
+    }
+  }
+]

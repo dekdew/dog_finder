@@ -41,18 +41,13 @@ class BreedModelChoiceField(ModelChoiceField):
 
 
 class DogRegisterForms(forms.ModelForm):
-  dog_name = forms.CharField(max_length=50)
-  dog_gender = forms.ChoiceField(choices=Dog.GENDER)
+
   dog_dob = forms.DateField(widget=forms.widgets.DateInput(attrs={'type': 'date'}))
-  dog_age = forms.IntegerField()
-  dog_color = forms.CharField(max_length=50)
   dog_breed = BreedModelChoiceField(queryset=Breed.objects.all(), to_field_name="breed_name")
-  dog_status = forms.ChoiceField(choices=Dog.STATUS)
-  dog_info = forms.CharField(widget=forms.Textarea)
 
   class Meta:
     model = Dog
-    fields = ['dog_image', 'dog_name', 'dog_gender', 'dog_breed', 'dog_dob', 'dog_age', 'dog_status', 'dog_info']
+    exclude = ['owner', 'dog_age', 'qr_code', 'dog_status']
 
   def clean_dog_dob(self):
     data = self.cleaned_data['dog_dob']

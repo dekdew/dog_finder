@@ -7,7 +7,7 @@ from django.shortcuts import render, redirect
 
 # Create your views here.
 from accounts.forms import UserRegisterForms, UserUpdateForms, ProfileUpdateForm, DogRegisterForms
-from accounts.models import Breed, DogColor
+from accounts.models import Breed
 
 
 def register(req):

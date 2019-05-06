@@ -58,7 +58,7 @@ class PostListView(ListView):
     context_object_name = 'posts'
     ordering = ['-date']
 
-    
+
 def about(req):
 
     return render(req, 'newfeeds/about.html', {'title': 'Post About'})

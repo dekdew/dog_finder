@@ -37,6 +37,8 @@ def register_dog(req):
         if dog_form.is_valid():
             dog = dog_form.save(commit=False)
             dog.owner = req.user
+            breed = Breed.objects.filter(breed_name=dog_form.cleaned_data.get('dog_breed'))
+            dog.breed = breed.id
             dog_form.save()
             return redirect('my_profile')
     else:

@@ -3,21 +3,230 @@
     "model": "accounts.Breed",
     "pk": 1,
     "fields": {
-      "breed_name": "Pug"
+      "breed_name": "Akita"
     }
   },
   {
     "model": "accounts.Breed",
     "pk": 2,
     "fields": {
-      "breed_name": "Siberian Husky"
+      "breed_name": "Australian Shepherd"
     }
   },
   {
     "model": "accounts.Breed",
     "pk": 3,
     "fields": {
+      "breed_name": "Basset Hound"
+    }
+  },
+  {
+    "model": "accounts.Breed",
+    "pk": 4,
+    "fields": {
+      "breed_name": "Beagle"
+    }
+  },
+  {
+    "model": "accounts.Breed",
+    "pk": 5,
+    "fields": {
+      "breed_name": "Bichon Frise"
+    },
+  {
+    "model": "accounts.Breed",
+    "pk": 6,
+    "fields": {
+      "breed_name": "Bloodhound"
+    }
+  },
+  {
+    "model": "accounts.Breed",
+    "pk": 7,
+    "fields": {
+      "breed_name": "Boston Terrier"
+    }
+  },
+  {
+    "model": "accounts.Breed",
+    "pk": 8,
+    "fields": {
+      "breed_name": "Boxer"
+    }
+  },
+  {
+    "model": "accounts.Breed",
+    "pk": 9,
+    "fields": {
+      "breed_name": "Bulldog"
+    }
+  },
+  {
+    "model": "accounts.Breed",
+    "pk": 10,
+    "fields": {
+      "breed_name": "Bullmastiff"
+    }
+  },
+  {
+    "model": "accounts.Breed",
+    "pk": 11,
+    "fields": {
+      "breed_name": "Cane Corso"
+    }
+  },
+  {
+    "model": "accounts.Breed",
+    "pk": 12,
+    "fields": {
+      "breed_name": "Chesapeake Bay Retrievers"
+    }
+  },
+  {
+    "model": "accounts.Breed",
+    "pk": 13,
+    "fields": {
+      "breed_name": "Chihuahua"
+    }
+  },
+  {
+    "model": "accounts.Breed",
+    "pk": 14,
+    "fields": {
+      "breed_name": "Collie"
+    }
+  },
+  {
+    "model": "accounts.Breed",
+    "pk": 15,
+    "fields": {
       "breed_name": "Corgi"
+    }
+  },
+  {
+    "model": "accounts.Breed",
+    "pk": 16,
+    "fields": {
+      "breed_name": "Dachshund"
+    }
+  },
+  {
+    "model": "accounts.Breed",
+    "pk": 17,
+    "fields": {
+      "breed_name": "Doberman Pinscher"
+    }
+  },
+  {
+    "model": "accounts.Breed",
+    "pk": 18,
+    "fields": {
+      "breed_name": "Golden Retriever"
+    }
+  },
+  {
+    "model": "accounts.Breed",
+    "pk": 19,
+    "fields": {
+      "breed_name": "Havanese"
+    }
+  },
+  {
+    "model": "accounts.Breed",
+    "pk": 20,
+    "fields": {
+      "breed_name": "Maltese"
+    }
+  },
+  {
+    "model": "accounts.Breed",
+    "pk": 21,
+    "fields": {
+      "breed_name": "Mastiff"
+    }
+  },
+  {
+    "model": "accounts.Breed",
+    "pk": 22,
+    "fields": {
+      "breed_name": "Miniature Schnauzer"
+    }
+  },
+  {
+    "model": "accounts.Breed",
+    "pk": 23,
+    "fields": {
+      "breed_name": "Papillon"
+    }
+  },
+  {
+    "model": "accounts.Breed",
+    "pk": 24,
+    "fields": {
+      "breed_name": "Pomeranian"
+    }
+  },
+  {
+    "model": "accounts.Breed",
+    "pk": 25,
+    "fields": {
+      "breed_name": "Pug"
+    }
+  },
+  {
+    "model": "accounts.Breed",
+    "pk": 26,
+    "fields": {
+      "breed_name": "Rottweiler"
+    }
+  },
+  {
+    "model": "accounts.Breed",
+    "pk": 27,
+    "fields": {
+      "breed_name": "Shiba Inu"
+    }
+  },
+  {
+    "model": "accounts.Breed",
+    "pk": 28,
+    "fields": {
+      "breed_name": "Shih Tzu"
+    }
+  },
+  {
+    "model": "accounts.Breed",
+    "pk": 29,
+    "fields": {
+      "breed_name": "Siberian Husky"
+    }
+  },
+  {
+    "model": "accounts.Breed",
+    "pk": 30,
+    "fields": {
+      "breed_name": "Thai Bangkaew"
+    }
+  },
+  {
+    "model": "accounts.Breed",
+    "pk": 31,
+    "fields": {
+      "breed_name": "Thai Ridgeback"
+    }
+  },
+  {
+    "model": "accounts.Breed",
+    "pk": 32,
+    "fields": {
+      "breed_name": "Vizsla"
+    }
+  },
+  {
+    "model": "accounts.Breed",
+    "pk": 33,
+    "fields": {
+      "breed_name": "Yorkshire Terrier"
     }
   }
 ]

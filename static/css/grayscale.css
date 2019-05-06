@@ -307,3 +307,11 @@ footer {
 .sticky-top {
     top: 5em;
 }
+
+.toast {
+    position: absolute !important;
+    top: 24px !important;
+    right: 0 !important;
+    z-index: 9999 !important;
+    margin: 1rem !important;
+}

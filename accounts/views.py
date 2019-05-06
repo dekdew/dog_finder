@@ -30,17 +30,13 @@ def register(req):
     return render(req, 'accounts/register.html', {'form': form})
 
 
+@login_required
 def register_dog(req):
     if req.method == 'POST':
         dog_form = DogRegisterForms(req.POST)
         if dog_form.is_valid():
             dog = dog_form.save(commit=False)
             dog.owner = req.user
-            print(dog_form.cleaned_data.get('dog_breed'))
-            breed = Breed.objects.get(breed_name=dog_form.cleaned_data.get('dog_breed'))
-            c = DogColor(color_name=dog_form.cleaned_data.get('dog_color'), dog_id=req.user.id)
-            dog.breed = breed
-            c.save()
             dog_form.save()
             return redirect('my_profile')
     else:
@@ -87,7 +83,7 @@ def edit_profile(req):
             user_form.save()
             profile_form.save()
             messages.success(req, f'Your account has been update!')
-            return redirect('edit_profile')
+            return redirect('my_profile')
     else:
         user_form = UserUpdateForms(instance=req.user)
         profile_form = ProfileUpdateForm(instance=req.user.profile)

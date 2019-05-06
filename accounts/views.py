@@ -30,6 +30,7 @@ def register(req):
     return render(req, 'accounts/register.html', {'form': form})
 
 
+@login_required
 def register_dog(req):
     if req.method == 'POST':
         dog_form = DogRegisterForms(req.POST)

@@ -1,0 +1,23 @@
+[
+  {
+    "model": "accounts.Breed",
+    "pk": 1,
+    "fields": {
+      "breed_name": "Pug"
+    }
+  },
+  {
+    "model": "accounts.Breed",
+    "pk": 2,
+    "fields": {
+      "breed_name": "Siberian Husky"
+    }
+  },
+  {
+    "model": "accounts.Breed",
+    "pk": 3,
+    "fields": {
+      "breed_name": "Corgi"
+    }
+  }
+]

@@ -73,38 +73,54 @@
         </svg>
     </a>
 </nav>
+<!-- Flexbox container for aligning the toasts -->
+<div aria-live="polite" aria-atomic="true">
 
-<div class="container-fluid">
-    <div class="row no-gutter">
-        <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image bg-warning"></div>
-        <div class="col col-md-8 col-lg-6">
-            <div class="login d-flex align-items-center py-5">
-                <div class="container">
-                    <div class=" mx-5">
-                        <form method="post" action="{% url 'login' %}">
-                            {% csrf_token %}
-                            <fieldset class="form-group">
-                                <legend class="border-bottom mb-4">Log in to DogFinder</legend>
+    <!-- alert -->
+    {% if error %}
+        <div role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-autohide="false">
+            <div class="toast-header">
+                <strong class="mr-auto">{{ error }}</strong>
+                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+    {% endif %}
+
+    <!-- main -->
+    <div class="container-fluid">
+        <div class="row no-gutter">
+            <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image bg-warning"></div>
+            <div class="col col-md-8 col-lg-6">
+                <div class="login d-flex align-items-center py-5">
+                    <div class="container">
+                        <div class=" mx-5">
+                            <form method="post" action="{% url 'login' %}">
+                                {% csrf_token %}
+                                <fieldset class="form-group">
+                                    <legend class="border-bottom mb-4">Log in to DogFinder</legend>
+                                    <div class="form-group">
+                                        <label for="username">Username</label>
+                                        <input type="text" class="form-control" name="username" id="username"
+                                               placeholder="Enter username">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password">Password</label>
+                                        <input type="password" class="form-control" name="password" id="password"
+                                               placeholder="Enter password">
+                                    </div>
+                                    <input type="hidden" name="next_url" value="{{ next_url }}">
+                                </fieldset>
                                 <div class="form-group">
-                                    <label for="username">Username</label>
-                                    <input type="text" class="form-control" name="username" id="username"
-                                           placeholder="Enter username">
+                                    <button class="btn btn-warning text-white btn-block" type="submit">Log in</button>
                                 </div>
-                                <div class="form-group">
-                                    <label for="password">Password</label>
-                                    <input type="password" class="form-control" name="password" id="password"
-                                           placeholder="Enter password">
-                                </div>
-                                <input type="hidden" name="next_url" value="{{ next_url }}">
-                            </fieldset>
-                            <div class="form-group">
-                                <button class="btn btn-warning text-white btn-block" type="submit">Log in</button>
+                            </form>
+                            <div class="text-center">
+                                <small class="text-muted text-center">
+                                    You don't have an account? <a href="{% url 'register' %}" class="ml-2">Sign Up</a>
+                                </small>
                             </div>
-                        </form>
-                        <div class="text-center">
-                            <small class="text-muted text-center">
-                                You don't have an account? <a href="{% url 'register' %}" class="ml-2">Sign Up</a>
-                            </small>
                         </div>
                     </div>
                 </div>
@@ -156,4 +172,13 @@
 {#    </div>#}
 {#</main>#}
 </body>
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
 
+<script>
+    $(document).ready(function () {
+        $('.toast').toast('show');
+    });
+</script>
+</html>

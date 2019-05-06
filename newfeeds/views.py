@@ -3,40 +3,40 @@ from django.shortcuts import render
 from django.views.generic import ListView
 
 post_list = [
-  {
-    'owner': 'Khing',
-    'dog_name': 'Tommy',
-    'date': 'August 28, 2019',
-    'image': 'demo-image-01',
-    'breed': 'Dachshund',
-    'gender': 'male',
-    'age': 2,
-    'colors': [
-      'black',
-      'brown',
-    ],
-    'lat': '13.729896',
-    'lon': '100.779320',
-    'location': 'Kmitl',
-  },
-  {
-    'owner': 'Few',
-    'dog_name': 'Apple',
-    'post_title': 'Blog2',
-    'post_detail': 'Second Post Content',
-    'date': 'August 29, 2019',
-    'image': 'demo-image-02',
-    'breed': 'Corgi',
-    'gender': 'female',
-    'age': 1,
-    'colors': [
-      'brown',
-      'white',
-    ],
-    'lat': '6.999079',
-    'lon': '100.472488',
-    'location': 'Hadyai',
-  }
+    {
+        'owner': 'Khing',
+        'dog_name': 'Tommy',
+        'date': 'August 28, 2019',
+        'image': 'demo-image-01',
+        'breed': 'Dachshund',
+        'gender': 'male',
+        'age': 2,
+        'colors': [
+            'black',
+            'brown',
+        ],
+        'lat': '13.729896',
+        'lon': '100.779320',
+        'location': 'Kmitl',
+    },
+    {
+        'owner': 'Few',
+        'dog_name': 'Apple',
+        'post_title': 'Blog2',
+        'post_detail': 'Second Post Content',
+        'date': 'August 29, 2019',
+        'image': 'demo-image-02',
+        'breed': 'Corgi',
+        'gender': 'female',
+        'age': 1,
+        'colors': [
+            'brown',
+            'white',
+        ],
+        'lat': '6.999079',
+        'lon': '100.472488',
+        'location': 'Hadyai',
+    }
 ]
 
 
@@ -56,7 +56,9 @@ class PostListView(ListView):
     model = Post
     template_name = 'newfeeds/index.html'
     context_object_name = 'posts'
+    ordering = ['-date']
 
+    
 def about(req):
 
     return render(req, 'newfeeds/about.html', {'title': 'Post About'})

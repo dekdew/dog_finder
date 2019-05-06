@@ -122,120 +122,61 @@
                     <div class="col-md-3">
                         <div class="profile card bg-light p-4 mt-3 sticky-top">
                             <div class="avatar">
-                                <img src="{{ user.profile.image.url }}"
+                                <img src="{{ dog.owner.profile.image.url }}"
                                      alt="Circle Image" class="img-raised rounded-circle img-fluid">
                             </div>
                             <div class="name">
-                                <h4 class="title text-capitalize">{{ user.first_name }} {{ user.last_name }}</h4>
+                                <h4 class="title text-capitalize">{{ dog.owner.first_name }} {{ dog.owner.last_name }}</h4>
 
                                 <ul class="list-group list-group-flush text-left">
                                     <li class="list-group-item bg-light">
                                         <i class="fas fa-phone text-muted"></i>
-                                        {{ user.profile.owner_phone }}
+                                        {{ dog.owner.profile.owner_phone }}
                                     </li>
                                     <li class="list-group-item bg-light">
                                         <i class="fas fa-envelope text-muted"></i>
-                                        {{ user.email }}
+                                        {{ dog.owner.email }}
                                     </li>
                                     <li class="list-group-item bg-light">
                                         <i class="fas fa-map-marker-alt text-muted"></i>
-                                        {{ user.profile.owner_address }}
+                                        {{ dog.owner.profile.owner_address }}
                                     </li>
                                 </ul>
-
-                                <a href="{% url 'edit_profile' %}" class="btn btn-warning text-white btn-block my-2">
-                                    Update profile
-                                </a>
-                                <a href="{% url 'dog_register' %}"
-                                   class="btn btn-outline-warning btn-block text-dark my-2">
-                                    <i class="fas fa-plus"></i>
-                                    Register new dog
-                                </a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-9 text-center p-5">
-                        <h2>My dogs</h2>
-                        <hr class="mb-4">
+                    <div class="col-md-9 text-center">
 
-                        <!-- My dogs -->
-                        <div class="row">
-
-                            {% for dog in dog_list %}
-                                <div class="col-md-6 p-3">
-                                    <div class="post text-white bg-dark">
-                                        <div class="post-image"
-                                             style="background-image: url('{{ dog.dog_image.url }}');"></div>
-                                        <div class="card bg-dark text-left text-white">
-                                            <div class="card-body">
-                                                <h4>
-                                                    {{ dog.dog_name }}
-                                                    {% if dog.dog_gender == 'Male' %}
-                                                        <i class="fas fa-mars text-blue"></i>
-                                                    {% else %}
-                                                        <i class="fas fa-venus text-pink"></i>
-                                                    {% endif %}
-                                                </h4>
-                                                <h6 class="card-subtitle mb-2 text-muted">
-                                                    <i class="fas fa-paw"></i>
-                                                {{ dog.dog_breed.breed_name }}
-
-                                                </h6>
-
-                                                <a class="mr-2 pr-2 border-right" href="{% url 'view_dog' dog.id %}"><i
-                                                        class="fas fa-info-circle"></i>
-                                                    more</a>
-                                                <a href=""><i class="fas fa-pen"></i> edit</a>
-                                            </div>
-                                        </div>
+                        <div class="p-3">
+                            <div class="post text-white bg-dark">
+                                <div class="post-image"
+                                     style="background-image: url('{{ dog.dog_image.url }}');"></div>
+                                <div class="card bg-dark text-left text-white">
+                                    <div class="card-body">
+                                        <h4>
+                                            {{ dog.dog_name }}
+                                            {% if dog.dog_gender == 'Male' %}
+                                                <i class="fas fa-mars text-blue"></i>
+                                            {% else %}
+                                                <i class="fas fa-venus text-pink"></i>
+                                            {% endif %}
+                                        </h4>
+                                        <h6 class="card-subtitle mb-2 text-muted">
+                                            <i class="fas fa-paw"></i>
+                                            {{ dog.dog_breed.breed_name }}
+                                        </h6>
                                     </div>
                                 </div>
-                            {% endfor %}
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        {#<div class="container-fluid">#}
-        {#    <div class="row no-gutter">#}
-        {#        <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image bg-warning"></div>#}
-        {#        <div class="col-md-8 col-lg-6">#}
-        {#            <div class="login d-flex align-items-center py-5">#}
-        {#                <div class="container">#}
-        {#                    <div class="mx-5">#}
-        {##}
-        {#                        {% if messages %}#}
-        {#                            {% for msg in messages %}#}
-        {##}
-        {#                                <div class="alert alert-{{ msg.tags }}">#}
-        {#                                    {{ msg }}#}
-        {#                                </div>#}
-        {#                            {% endfor %}#}
-        {#                        {% endif %}#}
-        {#                        <form method="post" enctype="multipart/form-data">#}
-        {#                            {% csrf_token %}#}
-        {#                            <fieldset class="form-group">#}
-        {#                                <legend class="border-bottom mb-4">Update Your Profile</legend>#}
-        {#                                {{ user_form | crispy }}#}
-        {#                                {{ profile_form | crispy }}#}
-        {#                            </fieldset>#}
-        {#                            <div class="form-group">#}
-        {#                                <button class="btn btn-warning text-white btn-block" type="submit">Update</button>#}
-        {#                            </div>#}
-        {#                        </form>#}
-        {##}
-        {#                    </div>#}
-        {#                </div>#}
-        {#            </div>#}
-        {#        </div>#}
-        {#    </div>#}
-        {#</div>#}
     </div>
     <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
     <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
     <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
     <script src="{% static 'js/grayscale.min.js' %}"></script>
-</div>
-</body>
 </html>

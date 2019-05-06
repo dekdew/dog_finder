@@ -112,3 +112,10 @@ def my_profile(req):
         context['dog_list'] = dog_list
 
     return render(req, 'accounts/my-profile.html', context=context)
+
+def view_dog(req, dog_id):
+    dog = Dog.objects.get(pk=dog_id)
+    context = {
+        'dog': dog
+    }
+    return render(req, 'accounts/view-dog.html', context=context)

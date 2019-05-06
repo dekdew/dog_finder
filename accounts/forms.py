@@ -5,7 +5,7 @@ from django import forms
 from django.forms import ModelChoiceField
 from django.contrib.auth.models import User
 
-from accounts.models import Profile, Dog, Breed
+from accounts.models import Profile, Dog, Breed, DogColor
 
 
 class UserRegisterForms(UserCreationForm):
@@ -40,13 +40,20 @@ class BreedModelChoiceField(ModelChoiceField):
     return "%s" % obj.breed_name
 
 
+class DogModelChoiceField(ModelChoiceField):
+    def label_from_instance(self, obj):
+        return "%s" % obj.color_name
+
+
 class DogRegisterForms(forms.ModelForm):
 
   dog_dob = forms.DateField(widget=forms.widgets.DateInput(attrs={'type': 'date'}))
   dog_breed = BreedModelChoiceField(queryset=Breed.objects.all(), to_field_name="breed_name")
+  dog_color = DogModelChoiceField(queryset=DogColor.objects.all(), to_field_name="color_name")
 
   class Meta:
     model = Dog
+    fields = ['dog_name', 'dog_gender', 'dog_breed', 'dog_dob', 'dog_info', 'dog_image', 'dog_color']
     exclude = ['owner', 'dog_age', 'qr_code', 'dog_status']
 
   def clean_dog_dob(self):

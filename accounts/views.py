@@ -7,7 +7,7 @@ from django.shortcuts import render, redirect
 
 # Create your views here.
 from accounts.forms import UserRegisterForms, UserUpdateForms, ProfileUpdateForm, DogRegisterForms
-from accounts.models import Breed, Dog
+from accounts.models import Breed, Dog, DogColor
 
 
 def register(req):
@@ -40,6 +40,7 @@ def register_dog(req):
             breed = Breed.objects.filter(breed_name=dog_form.cleaned_data.get('dog_breed'))
             print(breed)
             dog.breed = breed
+
             dog_form.save()
             return redirect('my_profile')
     else:

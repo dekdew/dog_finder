@@ -65,8 +65,8 @@ class Dog(models.Model):
     qr_code = models.TextField(default='-')
     owner = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
     dog_status = models.CharField(choices=STATUS, default='Normal', max_length=20)
-    # color1 = models.ForeignKey(DogColor, on_delete=models.CASCADE, default=1)
-    # color2 = models.ForeignKey(DogColor, on_delete=models.CASCADE, default=2)
+    color1 = models.ForeignKey(DogColor, on_delete=models.CASCADE, default=1)
+
 
     def __str__(self):
         return f'{self.owner.username} {self.dog_name} Profile'

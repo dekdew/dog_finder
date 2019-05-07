@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+{% load static %}
+{% load crispy_forms_tags %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% if title %}
+        <title>DogFinder - {{ title }}</title>
+    {% else %}
+        <title>DogFinder</title>
+    {% endif %}
+
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/fontawesome-free/css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/grayscale.css' %}">
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#feature">
+            <svg x="0px" y="0px" viewBox="0 0 147 26" height="26px">
+                <g>
+                    <path d="M39.9,6.6L39.9,6.6c-1-0.6-2.2-0.9-3.6-0.9c-1.4,0-2.6,0.3-3.6,0.9S30.9,8,30.3,9.1s-0.8,2.3-0.8,3.7s0.3,2.6,0.8,3.7
+		c0.6,1.1,1.4,1.9,2.4,2.5s2.3,0.9,3.6,0.9c1.4,0,2.6-0.3,3.6-0.9s1.9-1.4,2.4-2.5c0.6-1.1,0.9-2.3,0.9-3.7s-0.3-2.6-0.9-3.7
+		C41.8,8,40.9,7.2,39.9,6.6z M39.9,15.5c-0.4,0.7-1,1.2-1.6,1.5c-1.3,0.7-2.8,0.6-4.1,0c-0.6-0.3-1.2-0.8-1.6-1.5
+		c-0.4-0.7-0.6-1.6-0.6-2.7s0.2-2,0.6-2.7s0.9-1.2,1.6-1.5c0.6-0.3,1.3-0.5,2-0.5s1.4,0.2,2,0.5s1.2,0.8,1.6,1.5
+		c0.4,0.7,0.6,1.6,0.6,2.7C40.5,13.9,40.3,14.8,39.9,15.5z"/>
+                    <path d="M57.7,5.8c-0.4,0-0.7,0.1-0.9,0.4c-0.3,0.3-0.4,0.6-0.4,0.9v0.4c-1.2-1.2-2.7-1.8-4.4-1.8c-1.1,0-2.1,0.3-3.1,0.8
+		s-1.8,1.3-2.5,2.4c-0.6,1-1,2.3-1,3.8s0.3,2.8,1,3.8c0.6,1,1.5,1.8,2.5,2.4c1,0.5,2,0.8,3.1,0.8c1.7,0,3.2-0.6,4.4-1.8v1.5
+		c0,2.8-1.3,4.2-3.9,4.2c-1.5,0-3-0.3-4.3-1c-0.2-0.1-0.4-0.1-0.5-0.1c-0.3,0-0.6,0.1-0.8,0.4c-0.2,0.2-0.3,0.5-0.3,0.8
+		c0,0.5,0.2,0.8,0.5,1c0.7,0.4,1.6,0.7,2.6,1s2.1,0.4,3.1,0.4c2,0,3.6-0.6,4.7-1.8c1.1-1.2,1.6-3,1.6-5.2v-12c0-0.4-0.1-0.7-0.4-0.9
+		C58.4,5.9,58.1,5.8,57.7,5.8z M56.4,15.3c-0.6,0.6-1.2,1-1.8,1.4c-0.6,0.3-1.3,0.5-2.1,0.5c-1.3,0-2.3-0.4-3.2-1.2
+		c-0.8-0.8-1.2-1.9-1.2-3.4s0.4-2.6,1.2-3.4C50.1,8.4,51.2,8,52.5,8c0.8,0,1.5,0.2,2.1,0.5s1.2,0.8,1.8,1.4V15.3z"/>
+                    <path d="M74.8,1H64.5c-0.4,0-0.7,0.1-0.9,0.4c-0.3,0.3-0.4,0.6-0.4,0.9v16.2c0,0.4,0.1,0.7,0.4,0.9c0.3,0.3,0.6,0.4,0.9,0.4
+		c0.4,0,0.7-0.1,0.9-0.4c0.3-0.3,0.4-0.6,0.4-0.9v-6.9h8c0.3,0,0.6-0.1,0.9-0.4c0.2-0.2,0.4-0.5,0.4-0.9c0-0.3-0.1-0.6-0.4-0.9
+		C74.5,9.2,74.2,9,73.8,9h-8V3.5h8.9c0.3,0,0.6-0.1,0.9-0.4C75.8,2.9,76,2.6,76,2.2s-0.1-0.6-0.4-0.9C75.4,1.1,75.1,1,74.8,1z"/>
+                    <path d="M79.9,0.4h-0.2c-0.4,0-0.8,0.1-1,0.4s-0.4,0.7-0.4,1.1V2c0,0.4,0.1,0.8,0.4,1c0.3,0.3,0.6,0.4,1,0.4h0.2
+		c0.4,0,0.8-0.1,1-0.4c0.3-0.3,0.4-0.6,0.4-1V1.9c0-0.4-0.1-0.8-0.4-1S80.3,0.4,79.9,0.4z"/>
+                    <path d="M79.8,5.8c-0.4,0-0.7,0.1-0.9,0.4c-0.3,0.3-0.4,0.6-0.4,0.9v11.3c0,0.4,0.1,0.7,0.4,0.9c0.3,0.3,0.6,0.4,0.9,0.4
+		c0.4,0,0.7-0.1,0.9-0.4c0.3-0.3,0.4-0.6,0.4-0.9V7.1c0-0.4-0.1-0.7-0.4-1C80.5,5.9,80.2,5.8,79.8,5.8z"/>
+                    <path d="M95.1,6.4L95.1,6.4c-0.7-0.5-1.6-0.7-2.6-0.7c-1.1,0-2,0.2-2.8,0.7c-0.7,0.4-1.4,0.9-2,1.6V7.1c0-0.4-0.1-0.7-0.4-0.9
+		c-0.3-0.3-0.6-0.4-0.9-0.4c-0.4,0-0.7,0.1-0.9,0.4c-0.3,0.3-0.4,0.6-0.4,0.9v11.3c0,0.4,0.1,0.7,0.4,0.9c0.3,0.3,0.6,0.4,0.9,0.4
+		c0.4,0,0.7-0.1,0.9-0.4c0.3-0.3,0.4-0.6,0.4-0.9v-7.9c0.6-0.7,1.2-1.3,1.9-1.8C90.3,8.3,91,8,91.9,8c1.9,0,2.8,1,2.8,3.1v7.2
+		c0,0.4,0.1,0.7,0.4,0.9c0.3,0.3,0.6,0.4,0.9,0.4c0.4,0,0.7-0.1,0.9-0.4c0.3-0.3,0.4-0.6,0.4-0.9V11c0-1-0.2-1.9-0.6-2.7
+		C96.4,7.5,95.8,6.9,95.1,6.4z"/>
+                    <path d="M112.6,0c-0.4,0-0.7,0.1-0.9,0.4c-0.3,0.3-0.4,0.6-0.4,1v6.2c-1.3-1.2-2.7-1.8-4.4-1.8c-1.1,0-2.2,0.3-3.2,0.8
+		c-1,0.6-1.8,1.4-2.4,2.5s-0.9,2.4-0.9,3.8s0.3,2.7,0.9,3.8s1.4,1.9,2.4,2.5s2.1,0.8,3.2,0.8c1.7,0,3.1-0.6,4.4-1.8v0.4
+		c0,0.4,0.1,0.7,0.4,0.9c0.3,0.2,0.6,0.4,0.9,0.4c0.4,0,0.7-0.1,0.9-0.4c0.3-0.3,0.4-0.6,0.4-0.9V1.3c0-0.4-0.1-0.7-0.4-0.9
+		C113.2,0.1,112.9,0,112.6,0z M111.2,15.5c-0.5,0.6-1.1,1-1.8,1.4c-0.7,0.3-1.4,0.5-2.2,0.5c-1.3,0-2.3-0.4-3.1-1.2
+		c-0.8-0.8-1.2-2-1.2-3.4c0-1.5,0.4-2.6,1.2-3.4c0.8-0.8,1.8-1.2,3.1-1.2c0.8,0,1.5,0.2,2.2,0.5s1.3,0.8,1.8,1.4V15.5z"/>
+                    <path d="M126.9,6.6c-1-0.6-2.1-0.9-3.4-0.9c-1.4,0-2.6,0.3-3.6,1s-1.7,1.5-2.2,2.6s-0.7,2.2-0.7,3.5c0,2.2,0.6,4,1.8,5.3
+		c1.2,1.2,2.9,1.9,5.1,1.9c1.1,0,1.9-0.1,2.6-0.3c0.7-0.2,1.4-0.5,2.1-0.9c0.5-0.3,0.7-0.7,0.7-1.1c0-0.3-0.1-0.6-0.4-0.8
+		c-0.2-0.2-0.5-0.3-0.8-0.3c-0.2,0-0.4,0-0.5,0.1c-0.5,0.3-1.1,0.5-1.6,0.6s-1.2,0.2-1.9,0.2c-1.4,0-2.4-0.3-3.2-1
+		c-0.7-0.6-1.2-1.5-1.3-2.7h8.8c0.4,0,0.7-0.1,1-0.4c0.2-0.3,0.4-0.6,0.4-0.9c0-1.2-0.3-2.3-0.8-3.4C128.6,8.1,127.8,7.2,126.9,6.6z
+		 M119.7,11.6c0.1-0.8,0.3-1.4,0.6-2c0.4-0.6,0.8-1,1.4-1.2c1.1-0.5,2.3-0.5,3.4,0c0.6,0.3,1,0.7,1.4,1.2s0.6,1.2,0.6,2H119.7z"/>
+                    <path d="M140.5,6.1L140.5,6.1c-0.2-0.3-0.6-0.4-0.9-0.4h-0.1c-1.5,0-2.8,0.8-4,2.2V7.1c0-0.4-0.1-0.7-0.4-0.9
+		c-0.3-0.3-0.6-0.4-0.9-0.4c-0.4,0-0.7,0.1-0.9,0.4s-0.4,0.6-0.4,0.9v11.3c0,0.4,0.1,0.7,0.4,0.9c0.3,0.3,0.6,0.4,0.9,0.4
+		c0.4,0,0.7-0.1,0.9-0.4c0.3-0.3,0.4-0.6,0.4-0.9v-8c0.5-0.7,1-1.2,1.7-1.6c0.7-0.4,1.4-0.6,2.3-0.6h0.1c0.4,0,0.7-0.1,1-0.3
+		S141,7.4,141,7C140.8,6.6,140.7,6.3,140.5,6.1z"/>
+                    <path d="M18,1.1c-1.1,0-2.2,0-3.2,0c-1.2,0-2.4,0.1-3.5,0.5C9.4,2.3,8.1,3.4,7,4.9C5.8,6.4,4.3,7.6,2.5,8.3
+		C1.9,8.5,1.4,8.9,0.8,9.2C0.3,9.5,0,10,0,10.6c-0.1,0.5,0,1,0.1,1.5c0.4,2.1,1.4,3.9,3,5.3c1.5,1.3,3.2,2.1,5.1,2.3
+		c1.5,0.2,3,0.1,4.5,0.1c0.7,0,1.2-0.5,1.2-1.2c0-0.8-0.3-1.2-1.1-1.3c-0.2,0-0.4,0-0.6,0c-1.1,0-2.3,0.1-3.4-0.1
+		C5.7,16.8,3.4,15,2.7,12c-0.2-0.6-0.1-0.8,0.5-1.1c2.6-1,4.6-2.7,6.3-4.9c1-1.4,2.5-2.1,4.2-2.2c1.3-0.1,2.6-0.1,3.9-0.1
+		c1.2,0,2.4,0.3,3.5,0.9c2.5,1.5,3.8,3.7,3.5,6.6c-0.3,2.8-1.9,4.6-4.5,5.6c-1,0.4-0.8,0.2-0.9-0.7v-9c0-0.4-0.1-0.7-0.4-1
+		s-0.6-0.4-1-0.4s-0.7,0.1-0.9,0.4c-0.3,0.4-0.4,0.7-0.4,1v11.3c0,0.4,0.1,0.7,0.4,0.9c0.3,0.3,0.6,0.4,0.9,0.4l0,0l0,0
+		c0.7,0,1,0,1.7-0.2c4.9-0.9,8.4-5.6,7.6-10.7C26.3,4.6,22.4,1.2,18,1.1z"/>
+                    <path d="M11.8,6.9c-0.4,0-0.8,0.1-1,0.4c-0.3,0.3-0.4,0.6-0.4,1v0.1c0,0.4,0.1,0.8,0.4,1c0.3,0.3,0.6,0.4,1,0.4H12
+		c0.4,0,0.8-0.1,1-0.4c0.3-0.3,0.4-0.6,0.4-1V8.3c0-0.4-0.1-0.8-0.4-1c-0.3-0.3-0.6-0.4-1-0.4H11.8z"/>
+                </g>
+            </svg>
+        </a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                {% if user.is_authenticated %}
+                    <li class="nav-item avatar dropdown">
+                        <a class="nav-link dropdown-toggle text-capitalize" id="navbarDropdownMenuLink-4"
+                           data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            <img src="{{ user.profile.image.url }}"
+                                 class="rounded-circle z-depth-0 border"
+                                 alt="avatar image" height="35">
+                            {{ user.username }}
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-info"
+                             aria-labelledby="navbarDropdownMenuLink-4">
+                            <a class="dropdown-item" href="{% url 'my_profile' %}">
+                                <i class="fas fa-user"></i>
+                                My Profile
+                            </a>
+                            <a class="dropdown-item" href="{% url 'edit_profile' %}">
+                                <i class="fas fa-user-edit"></i>
+                                Edit Profile
+                            </a>
+                            <a class="dropdown-item" href="{% url 'logout' %}">
+                                <i class="fas fa-sign-out-alt"></i>
+                                Log out
+                            </a>
+                        </div>
+                    </li>
+                    {#                        <li class="nav-item">#}
+                    {#                            <a class="nav-link" href="{% url 'profile' %}">Profile</a>#}
+                    {#                        </li>#}
+                    {#                        <li class="nav-item">#}
+                    {#                            <a class="nav-link" href="{% url 'logout' %}">Logout</a>#}
+                    {#                        </li>#}
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Log in</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'register' %}">Sign Up</a>
+                    </li>
+                {% endif %}
+            </ul>
+
+        </div>
+    </div>
+</nav>
+
+<div class="profile-page">
+    <div class="page-header header-filter" data-parallax="true"></div>
+    <div class="main main-raised">
+        <div class="profile-content pb-5 mb-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 mx-auto">
+                        <div class="profile-content">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-6 ml-auto mr-auto">
+                                        <div class="profile card bg-light mt-3">
+                                            <div class="avatar">
+                                                <img src="{{ user_profile.profile.image.url }}"
+                                                     alt="Circle Image" class="img-raised rounded-circle img-fluid">
+                                            </div>
+                                            <div class="name">
+                                                <h4 class="title text-capitalize">{{ user_profile.first_name }} {{ user_profile.last_name }}</h4>
+
+                                                <ul class="list-group list-group-flush text-left">
+                                                    <li class="list-group-item bg-light">
+                                                        <i class="fas fa-phone text-muted"></i>
+                                                        {{ user_profile.profile.owner_phone }}
+                                                    </li>
+                                                    <li class="list-group-item bg-light">
+                                                        <i class="fas fa-envelope text-muted"></i>
+                                                        {{ user_profile.email }}
+                                                    </li>
+                                                    <li class="list-group-item bg-light">
+                                                        <i class="fas fa-map-marker-alt text-muted"></i>
+                                                        {{ user_profile.profile.owner_address }}
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+<script src="{% static 'js/grayscale.min.js' %}"></script>
+</html>

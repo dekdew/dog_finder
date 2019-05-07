@@ -144,12 +144,18 @@
                                 </ul>
 
                                 <a href="{% url 'edit_profile' %}" class="btn btn-warning text-white btn-block my-2">
+                                    <i class="fas fa-user-edit"></i>
                                     Update profile
                                 </a>
                                 <a href="{% url 'dog_register' %}"
-                                   class="btn btn-outline-warning btn-block text-dark my-2">
+                                   class="btn btn-outline-warning btn-block my-2">
                                     <i class="fas fa-plus"></i>
                                     Register new dog
+                                </a>
+                                <a href="{% url 'post-create' %}"
+                                   class="btn btn-outline-danger btn-block my-2">
+                                    <i class="fas fa-low-vision"></i>
+                                    Lost my dog
                                 </a>
                             </div>
                         </div>
@@ -158,40 +164,85 @@
                         <h2>My dogs</h2>
                         <hr class="mb-4">
 
-                        <!-- My dogs -->
-                        <div class="row">
+                        {% if dog_list %}
+                            <!-- My dogs -->
+                            <div class="row">
 
-                            {% for dog in dog_list %}
-                                <div class="col-md-6 p-3">
-                                    <div class="post text-white bg-dark">
-                                        <div class="post-image"
-                                             style="background-image: url('{{ dog.dog_image.url }}');"></div>
-                                        <div class="card bg-dark text-left text-white">
-                                            <div class="card-body">
-                                                <h4>
-                                                    {{ dog.dog_name }}
-                                                    {% if dog.dog_gender == 'Male' %}
-                                                        <i class="fas fa-mars text-blue"></i>
-                                                    {% else %}
-                                                        <i class="fas fa-venus text-pink"></i>
-                                                    {% endif %}
-                                                </h4>
-                                                <h6 class="card-subtitle mb-2 text-muted">
-                                                    <i class="fas fa-paw"></i>
-                                                {{ dog.dog_breed.breed_name }}
+                                {% for dog in dog_list %}
+                                    <div class="col-md-6 p-3">
+                                        <div class="post text-white bg-dark">
+                                            <div class="post-image"
+                                                 style="background-image: url('{{ dog.dog_image.url }}');"></div>
+                                            <div class="card bg-dark text-left text-white">
+                                                <div class="card-body">
+                                                    <h4>
+                                                        {{ dog.dog_name }}
+                                                        {% if dog.dog_gender == 'Male' %}
+                                                            <i class="fas fa-mars text-blue"></i>
+                                                        {% else %}
+                                                            <i class="fas fa-venus text-pink"></i>
+                                                        {% endif %}
+                                                    </h4>
+                                                    <h6 class="card-subtitle mb-2 text-muted">
+                                                        <i class="fas fa-paw"></i>
+                                                        {{ dog.dog_breed.breed_name }}
 
-                                                </h6>
+                                                    </h6>
 
-                                                <a class="mr-2 pr-2 border-right" href="{% url 'view_dog' dog.id %}"><i
-                                                        class="fas fa-info-circle"></i>
-                                                    more</a>
-                                                <a href=""><i class="fas fa-pen"></i> edit</a>
+                                                    <a class="mr-2 pr-2 border-right text-info"
+                                                       href="{% url 'view_dog' dog.id %}">
+                                                        <i class="fas fa-info-circle"></i>
+                                                        more
+                                                    </a>
+                                                    <a class="mr-2 px-2 border-right"
+                                                       href="{% url 'edit_dog' dog.id %}">
+                                                        <i class="fas fa-pen"></i>
+                                                        edit
+                                                    </a>
+                                                    <a class="pl-2 text-danger" data-toggle="modal"
+                                                       data-target="#exampleModal">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                        delete
+                                                    </a>
+
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="exampleModal" tabindex="-1"
+                                                         role="dialog"
+                                                         aria-labelledby="exampleModalLabel"
+                                                         aria-hidden="true">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title text-dark"
+                                                                        id="exampleModalLabel">
+                                                                        Are you sure to delete {{ dog.dog_name }}?
+                                                                    </h5>
+                                                                    <button type="button" class="close"
+                                                                            data-dismiss="modal"
+                                                                            aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                            data-dismiss="modal">
+                                                                        Cancel
+                                                                    </button>
+                                                                    <a href="{% url 'delete_dog' dog.id %}"
+                                                                       class="btn btn-danger">Delete</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            {% endfor %}
-                        </div>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            <p>You don't have any dog. <a href="{% url 'dog_register' %}">Register now!</a></p>
+                        {% endif %}
                     </div>
                 </div>
             </div>

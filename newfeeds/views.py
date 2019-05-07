@@ -1,6 +1,12 @@
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
-from django.shortcuts import render
-from django.views.generic import ListView, CreateView
+
+from django.shortcuts import render, redirect
+from django.views.generic import ListView
+
+
+from accounts.models import Dog, DogFound, Breed, DogColor
+from newfeeds.forms import PostModelForm, PostFoundModelForm, FounderModelForm
 
 post_list = [
     {
@@ -59,15 +65,48 @@ class PostListView(ListView):
     ordering = ['-date']
 
 
-class PostCreateView(CreateView):
-    model = Post
-    template_name = 'newfeeds/post-create.html'
-    fields = ['post_title', 'post_detail', 'latitude', 'longtitude']
+@login_required
+def create_post(req):
+    if req.method == 'POST':
+        form = PostModelForm(req.user, req.POST)
+        if form.is_valid():
+            post_form = form.save(commit=False)
+            post_form.owner = req.user
+            print('eiei  '+str(form.cleaned_data.get('dog_name').dog_name))
+            Dog.objects.filter(dog_name=form.cleaned_data.get('dog_name').dog_name, owner=req.user).update(dog_status='Lost')
+            post_form.dog = Dog.objects.get(dog_name=form.cleaned_data.get('dog_name').dog_name)
+            post_form.types = 0
+            form.save()
+            return redirect('index')
+    else:
 
-    def form_valid(self, form):
-        form.instance.owner = self.request.user
-        return super().form_valid(form)
+        form = PostModelForm(user=req.user)
+    context = {'form': form}
+    return render(req, 'newfeeds/post-create.html', context)
 
+
+def create_found(req):
+    if req.method == 'POST':
+        post_form = PostFoundModelForm(req.POST)
+        founder_form = FounderModelForm(req.POST, req.FILES)
+        if post_form.is_valid() and founder_form.is_valid():
+            p = post_form.save(commit=False)
+            f = founder_form.save(commit=False)
+            f.dog_breed = Breed.objects.get(breed_name=founder_form.cleaned_data.get('dog_breed').breed_name)
+            f.dog_color = DogColor.objects.get(color_name=founder_form.cleaned_data.get('dog_color').color_name)
+
+            f.save()
+            p.types = 1
+            p.founder = DogFound.objects.get(founder_name=founder_form.cleaned_data.get('founder_name'))
+            post_form.save()
+            founder_form.save()
+            return redirect('index')
+    else:
+
+        post_form = PostFoundModelForm()
+        founder_form = FounderModelForm()
+    context = {'post_form': post_form, 'founder_form': founder_form}
+    return render(req, 'newfeeds/post-found.html', context)
 
 def about(req):
 

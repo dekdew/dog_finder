@@ -122,12 +122,13 @@
                     <div class="col-md-6 ml-auto mr-auto">
                         <div class="profile">
                             <div class="mt-4">
-                                <h3 class="title text-capitalize">Create New Post</h3>
+                                <h3 class="title text-capitalize">Create New Found</h3>
                                 <hr class="mb-4">
-                                <form class="text-left card p-3" action="{% url 'post-create' %}" method="post">
+                                <form class="text-left card p-3" action="{% url 'post-found' %}" method="post">
                                     {% csrf_token %}
                                     <fieldset class="form-group">
-                                        {{ form | crispy }}
+                                        {{ post_form | crispy }}
+                                        {{ founder_form | crispy }}
 
                                     </fieldset>
                                     <div class="form-group">

@@ -154,7 +154,7 @@
                     <div class="card py-4 h-100">
                         <div class="card-body text-center">
                             <img src="{% static 'img/lost_dog.svg' %}" class="mb-4">
-                            <a href="" class="text-uppercase m-0 btn text-dark btn-outline-warning btn-lg btn-block">Lost
+                            <a href="{% url 'post-create' %}" class="text-uppercase m-0 btn text-dark btn-outline-warning btn-lg btn-block">Lost
                                 your dog</a>
                         </div>
                     </div>
@@ -265,7 +265,9 @@
                                             <div class="card bg-dark text-left h-100 text-white">
                                                 <div class="card-header">
                                                     <h4 class="card-title">
-
+                                                         <a href="{% url 'view_dog' post.dog.id %}">
+                                                            {{ post.dog.dog_name }}
+                                                        </a>
                                                         {% if post.dog.dog_gender == 'Male' %}
                                                             <i class="fas fa-mars text-blue"></i>
                                                         {% else %}

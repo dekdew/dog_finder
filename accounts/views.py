@@ -152,4 +152,14 @@ def edit_dog(req, dog_id):
         }
         return render(req, 'accounts/edit-dog.html', context=context)
     else:
-        return  redirect('login')
+        return redirect('login')
+
+
+@login_required
+def delete_dog(req, dog_id):
+    dog = Dog.objects.get(id=dog_id)
+    if req.user.id == dog.owner.id:
+        dog.delete()
+        return redirect('my_profile')
+    else:
+        return redirect('login')

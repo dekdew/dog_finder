@@ -208,8 +208,9 @@
         marker.setLngLat([lng, lat]);
     });
 
-    geocoder.on('change', function (e) {
-        console.log('hello')
+    geocoder.on('result', function (e) {
+        console.log(e)
+        marker.setLngLat(e.result.geometry.coordinates);
     });
 
     map.on('click', function (e) {

@@ -162,18 +162,24 @@
       type='text/css'/>
 
 <script>
+    latitude = document.getElementById('id_latitude');
+    longtitude = document.getElementById('id_longtitude');
+
+    latitude.value = 13.7278245;
+    longtitude.value = 100.77911;
+
     mapboxgl.accessToken = 'pk.eyJ1IjoicGFzc2F3aXQiLCJhIjoiY2p2ZTJhdnl4MTczazQxcDg4Zzk5ZnZxMyJ9.7teQ6On47tRGb06Nz0_oUA';
     var map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v11',
-        center: [100.76683739860545, 13.726123804277748],
+        center: [100.77911, 13.7278245],
         zoom: 13
     });
 
     var marker = new mapboxgl.Marker({
         draggable: true
     })
-        .setLngLat([100.76683739860545, 13.726123804277748])
+        .setLngLat([100.77911, 13.7278245])
         .addTo(map);
 
     function onDragEnd() {
@@ -206,15 +212,20 @@
         lat = e.coords.latitude;
         lng = e.coords.longitude;
         marker.setLngLat([lng, lat]);
+        longtitude.value = lng;
+        latitude.value = lat;
     });
 
     geocoder.on('result', function (e) {
-        console.log(e)
         marker.setLngLat(e.result.geometry.coordinates);
+        longtitude.value = e.result.geometry.coordinates[0];
+        latitude.value = e.result.geometry.coordinates[1];
     });
 
     map.on('click', function (e) {
         marker.setLngLat(e.lngLat);
+        longtitude.value = e.lngLat.lng;
+        latitude.value = e.lngLat.lat;
     });
 
 </script>

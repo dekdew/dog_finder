@@ -134,39 +134,49 @@
         <div class="profile-content pb-5 mb-5">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="profile card bg-light p-4 mt-3 sticky-top">
-                            <div class="avatar">
-                                <img src="{{ user_profile.profile.image.url }}"
-                                     alt="Circle Image" class="img-raised rounded-circle img-fluid">
-                            </div>
-                            <div class="name">
-                                <h4 class="title text-capitalize">{{ user_profile.first_name }} {{ user_profile.last_name }}</h4>
+                    <div class="col-md-12 mx-auto">
+                        <div class="profile-content">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-6 ml-auto mr-auto">
+                                        <div class="profile card bg-light mt-3">
+                                            <div class="avatar">
+                                                <img src="{{ user_profile.profile.image.url }}"
+                                                     alt="Circle Image" class="img-raised rounded-circle img-fluid">
+                                            </div>
+                                            <div class="name">
+                                                <h4 class="title text-capitalize">{{ user_profile.first_name }} {{ user_profile.last_name }}</h4>
 
-                                <ul class="list-group list-group-flush text-left">
-                                    <li class="list-group-item bg-light">
-                                        <i class="fas fa-phone text-muted"></i>
-                                        {{ user_profile.profile.owner_phone }}
-                                    </li>
-                                    <li class="list-group-item bg-light">
-                                        <i class="fas fa-envelope text-muted"></i>
-                                        {{ user_profile.email }}
-                                    </li>
-                                    <li class="list-group-item bg-light">
-                                        <i class="fas fa-map-marker-alt text-muted"></i>
-                                        {{ user_profile.profile.owner_address }}
-                                    </li>
-                                </ul>
+                                                <ul class="list-group list-group-flush text-left">
+                                                    <li class="list-group-item bg-light">
+                                                        <i class="fas fa-phone text-muted"></i>
+                                                        {{ user_profile.profile.owner_phone }}
+                                                    </li>
+                                                    <li class="list-group-item bg-light">
+                                                        <i class="fas fa-envelope text-muted"></i>
+                                                        {{ user_profile.email }}
+                                                    </li>
+                                                    <li class="list-group-item bg-light">
+                                                        <i class="fas fa-map-marker-alt text-muted"></i>
+                                                        {{ user_profile.profile.owner_address }}
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
-
     </div>
-    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
-    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-    <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
-    <script src="{% static 'js/grayscale.min.js' %}"></script>
+
+</div>
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+<script src="{% static 'js/grayscale.min.js' %}"></script>
 </html>

@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic import ListView, CreateView
 
 post_list = [
     {
@@ -57,6 +57,16 @@ class PostListView(ListView):
     template_name = 'newfeeds/index.html'
     context_object_name = 'posts'
     ordering = ['-date']
+
+
+class PostCreateView(CreateView):
+    model = Post
+    template_name = 'newfeeds/post-create.html'
+    fields = ['post_title', 'post_detail', 'latitude', 'longtitude']
+
+    def form_valid(self, form):
+        form.instance.owner = self.request.user
+        return super().form_valid(form)
 
 
 def about(req):

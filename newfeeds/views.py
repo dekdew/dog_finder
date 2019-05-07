@@ -1,6 +1,9 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import ListView
+
+from accounts.models import Dog
+from newfeeds.forms import PostModelForm
 
 post_list = [
     {
@@ -57,6 +60,24 @@ class PostListView(ListView):
     template_name = 'newfeeds/index.html'
     context_object_name = 'posts'
     ordering = ['-date']
+
+
+def create_post(req):
+    if req.method == 'POST':
+        form = PostModelForm(req.user, req.POST)
+        if form.is_valid():
+            post_form = form.save(commit=False)
+            post_form.owner = req.user
+            print('eiei  '+str(form.cleaned_data.get('dog_name').dog_name))
+            Dog.objects.filter(dog_name=form.cleaned_data.get('dog_name').dog_name, owner=req.user).update(dog_status='Lost')
+            post_form.dog = Dog.objects.get(dog_name=form.cleaned_data.get('dog_name').dog_name)
+            post_form.types = 0
+            form.save()
+            return redirect('index')
+    else:
+        form = PostModelForm(user=req.user)
+    context = {'form': form}
+    return render(req, 'newfeeds/post-create.html', context)
 
 
 def about(req):

@@ -12,8 +12,8 @@ class DogModelChoiceField(ModelChoiceField):
 
 class PostModelForm(forms.ModelForm):
     dog_name = DogModelChoiceField(queryset=Dog.objects.none(), to_field_name='dog_name')
-    latitude = forms.CharField(disabled=True)
-    longtitude = forms.CharField(disabled=True)
+    latitude = forms.CharField(widget = forms.TextInput(attrs={'readonly':'readonly'}))
+    longtitude = forms.CharField(widget = forms.TextInput(attrs={'readonly':'readonly'}))
 
     class Meta:
         model = Post

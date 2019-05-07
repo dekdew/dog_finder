@@ -58,6 +58,7 @@ class Dog(models.Model):
     dog_name = models.CharField(max_length=50)
     dog_gender = models.CharField(choices=GENDER, default='Male', max_length=10)
     dog_breed = models.ForeignKey(Breed, on_delete=models.CASCADE, default=1)
+    color1 = models.ForeignKey(DogColor, on_delete=models.CASCADE, default=1)
     dog_dob = models.DateField(null=True, blank=True)
     dog_info = models.TextField(default='-')
     dog_age = models.IntegerField(default=0)
@@ -65,7 +66,6 @@ class Dog(models.Model):
     qr_code = models.TextField(default='-')
     owner = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
     dog_status = models.CharField(choices=STATUS, default='Normal', max_length=20)
-    color1 = models.ForeignKey(DogColor, on_delete=models.CASCADE, default=1)
 
 
     def __str__(self):

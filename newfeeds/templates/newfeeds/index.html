@@ -207,8 +207,9 @@
                                             <div class="card bg-dark text-left h-100 text-white">
                                                 <div class="card-header">
                                                     <h4 class="card-title">
-                                                        {#                                                    {{ post.owner.dog_set.first.dog_name }}#}
-                                                        {{ post.dog.dog_name }}
+                                                        <a href="{% url 'view_dog' post.dog.id %}">
+                                                            {{ post.dog.dog_name }}
+                                                        </a>
                                                         {% if post.dog.dog_gender == 'Male' %}
                                                             <i class="fas fa-mars text-blue"></i>
                                                         {% else %}
@@ -264,8 +265,7 @@
                                             <div class="card bg-dark text-left h-100 text-white">
                                                 <div class="card-header">
                                                     <h4 class="card-title">
-                                                        {#                                                    {{ post.owner.dog_set.first.dog_name }}#}
-                                                        {{ post.dog.dog_name }}
+                                                        
                                                         {% if post.dog.dog_gender == 'Male' %}
                                                             <i class="fas fa-mars text-blue"></i>
                                                         {% else %}

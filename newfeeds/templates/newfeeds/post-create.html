@@ -129,6 +129,8 @@
                                     <fieldset class="form-group">
                                         {{ form | crispy }}
 
+                                        <div id='map' style="height: 20em"></div>
+
                                     </fieldset>
                                     <div class="form-group">
                                         <button class="btn btn-warning text-white btn-block" type="submit">
@@ -143,3 +145,77 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
+</body>
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+<script src="{% static 'js/grayscale.min.js' %}"></script>
+
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.54.0/mapbox-gl.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.54.0/mapbox-gl.css' rel='stylesheet'/>
+
+<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.2.0/mapbox-gl-geocoder.min.js'></script>
+<link rel='stylesheet'
+      href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.2.0/mapbox-gl-geocoder.css'
+      type='text/css'/>
+
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoicGFzc2F3aXQiLCJhIjoiY2p2ZTJhdnl4MTczazQxcDg4Zzk5ZnZxMyJ9.7teQ6On47tRGb06Nz0_oUA';
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11',
+        center: [100.76683739860545, 13.726123804277748],
+        zoom: 13
+    });
+
+    var marker = new mapboxgl.Marker({
+        draggable: true
+    })
+        .setLngLat([100.76683739860545, 13.726123804277748])
+        .addTo(map);
+
+    function onDragEnd() {
+        var lngLat = marker.getLngLat();
+        console.log(lngLat.lat + ', ' + lngLat.lng);
+    }
+
+    marker.on('dragend', onDragEnd);
+
+    var geocoder = new MapboxGeocoder({
+        accessToken: mapboxgl.accessToken,
+        marker: null,
+        mapboxgl: mapboxgl
+    });
+
+    map.addControl(geocoder);
+
+    // Add geolocate control to the map.
+    var geolocate = new mapboxgl.GeolocateControl({
+        positionOptions: {
+            enableHighAccuracy: true
+        },
+        showUserLocation: false,
+        trackUserLocation: true
+    });
+
+    map.addControl(geolocate);
+
+    geolocate.on('geolocate', function (e) {
+        lat = e.coords.latitude;
+        lng = e.coords.longitude;
+        marker.setLngLat([lng, lat]);
+    });
+
+    geocoder.on('change', function (e) {
+        console.log('hello')
+    });
+
+    map.on('click', function (e) {
+        marker.setLngLat(e.lngLat);
+    });
+
+</script>
+
+</html>

@@ -143,7 +143,8 @@
                     <div class="card py-4 h-100">
                         <div class="card-body text-center">
                             <img src="{% static 'img/register_dog.svg' %}" class="mb-4">
-                            <a href="{% url 'dog_register' %}" class="text-uppercase m-0 btn text-dark btn-outline-warning btn-lg btn-block">Register
+                            <a href="{% url 'dog_register' %}"
+                               class="text-uppercase m-0 btn text-dark btn-outline-warning btn-lg btn-block">Register
                                 your dog</a>
                         </div>
                     </div>
@@ -197,105 +198,111 @@
 
                             {% for post in posts %}
                                 {% if post.types == '0' %}
-                                <div class="post row justify-content-center no-gutters mb-4">
-                                    <div class="post-image col-lg-7"
-                                         style="background-image:
-                                                 {# url('{% static 'img/'|add:post.image|add:'.jpg' %}') #}
-                                                 url('{{ post.dog.dog_image.url }}');"></div>
-                                    <div class="post-content col-lg-5">
-                                        <div class="card bg-dark text-left h-100 text-white">
-                                            <div class="card-header">
-                                                <h4 class="card-title">
-{#                                                    {{ post.owner.dog_set.first.dog_name }}#}
-                                                    {{ post.dog.dog_name }}
-                                                    {% if post.dog.dog_gender == 'Male' %}
-                                                        <i class="fas fa-mars text-blue"></i>
-                                                    {% else %}
-                                                        <i class="fas fa-venus text-pink"></i>
-                                                    {% endif %}
-                                                </h4>
-                                                <h6 class="card-subtitle mb-2 text-muted">
-                                                    <i class="fas fa-low-vision"></i>
-                                                    {{ post.date }}
-                                                </h6>
-                                            </div>
-                                            <div class="card-body">
-                                                <p class="card-text"><span class="text-muted">
+                                    <div class="post row justify-content-center no-gutters mb-4">
+                                        <div class="post-image col-lg-7"
+                                             style="background-image:
+                                                     {# url('{% static 'img/'|add:post.image|add:'.jpg' %}') #}
+                                                     url('{{ post.dog.dog_image.url }}');"></div>
+                                        <div class="post-content col-lg-5">
+                                            <div class="card bg-dark text-left h-100 text-white">
+                                                <div class="card-header">
+                                                    <h4 class="card-title">
+                                                        {#                                                    {{ post.owner.dog_set.first.dog_name }}#}
+                                                        {{ post.dog.dog_name }}
+                                                        {% if post.dog.dog_gender == 'Male' %}
+                                                            <i class="fas fa-mars text-blue"></i>
+                                                        {% else %}
+                                                            <i class="fas fa-venus text-pink"></i>
+                                                        {% endif %}
+                                                    </h4>
+                                                    <h6 class="card-subtitle mb-2 text-muted">
+                                                        <i class="fas fa-low-vision"></i>
+                                                        {{ post.date }}
+                                                    </h6>
+                                                </div>
+                                                <div class="card-body">
+                                                    <p class="card-text"><span class="text-muted">
                                                     Breed:</span> {# {{ post.owner.dog_set.first.breed.breed_name }} #}
-                                                    {{ post.dog.breed.breed_name }}
-                                                </p>
-                                                <p class="card-text"><span class="text-muted">
-                                                    Age:</span> {# {{ post.owner.dog_set.first.dog_age }} #} {{ post.dog.dog_age }} years old
-                                                </p>
-                                                <p class="card-text"><span class="text-muted">
-                                                    Owner:</span> {{ post.owner.first_name }} {{ post.owner.last_name }}
-                                                </p>
-                                                <p class="card-text"><span class="text-muted">
+                                                        {{ post.dog.dog_breed.breed_name }}
+                                                    </p>
+                                                    <p class="card-text"><span class="text-muted">
+                                                    Age:</span>
+                                                        {# {{ post.owner.dog_set.first.dog_age }} #} {{ post.dog.dog_age }}
+                                                        years old
+                                                    </p>
+                                                    <p class="card-text"><span class="text-muted">
+                                                    Owner:</span>
+                                                        <a href="">
+                                                            {{ post.owner.first_name }} {{ post.owner.last_name }}
+                                                        </a>
+                                                    </p>
+                                                    <p class="card-text"><span class="text-muted">
                                                     Colors:</span>
-                                                    {% for color in post.dog.dogcolor_set.all %}
-                                                        {{ color.color_name }} {% endfor %}
-                                                </p>
-                                            </div>
-                                            <div class="card-footer">
-                                                <i class="fas fa-map-marker-alt text-warning"></i>
-                                                {{ post.owner.profile.owner_address }}
+                                                        {{ post.dog.color1.color_name }}
+                                                    </p>
+                                                </div>
+                                                <div class="card-footer">
+                                                    <i class="fas fa-map-marker-alt text-warning"></i>
+                                                    {{ post.owner.profile.owner_address }}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
                                 {% endif %}
 
                             {% endfor %}
                         </div>
                         <div class="tab-pane fade p-5" id="nav-profile" role="tabpanel" aria-labelledby="nav-found-tab">
-                             {% for post in posts %}
+                            {% for post in posts %}
                                 {% if post.types == '1' %}
-                                <div class="post row justify-content-center no-gutters mb-4">
-                                    <div class="post-image col-lg-7"
-                                         style="background-image:
-                                                 {# url('{% static 'img/'|add:post.image|add:'.jpg' %}') #}
-                                                 url('{{ post.dog.dog_image.url }}');"></div>
-                                    <div class="post-content col-lg-5">
-                                        <div class="card bg-dark text-left h-100 text-white">
-                                            <div class="card-header">
-                                                <h4 class="card-title">
-{#                                                    {{ post.owner.dog_set.first.dog_name }}#}
-                                                    {{ post.dog.dog_name }}
-                                                    {% if post.dog.dog_gender == 'Male' %}
-                                                        <i class="fas fa-mars text-blue"></i>
-                                                    {% else %}
-                                                        <i class="fas fa-venus text-pink"></i>
-                                                    {% endif %}
-                                                </h4>
-                                                <h6 class="card-subtitle mb-2 text-muted">
-                                                    <i class="fas fa-low-vision"></i>
-                                                    {{ post.date }}
-                                                </h6>
-                                            </div>
-                                            <div class="card-body">
-                                                <p class="card-text"><span class="text-muted">
+                                    <div class="post row justify-content-center no-gutters mb-4">
+                                        <div class="post-image col-lg-7"
+                                             style="background-image:
+                                                     {# url('{% static 'img/'|add:post.image|add:'.jpg' %}') #}
+                                                     url('{{ post.dog.dog_image.url }}');"></div>
+                                        <div class="post-content col-lg-5">
+                                            <div class="card bg-dark text-left h-100 text-white">
+                                                <div class="card-header">
+                                                    <h4 class="card-title">
+                                                        {#                                                    {{ post.owner.dog_set.first.dog_name }}#}
+                                                        {{ post.dog.dog_name }}
+                                                        {% if post.dog.dog_gender == 'Male' %}
+                                                            <i class="fas fa-mars text-blue"></i>
+                                                        {% else %}
+                                                            <i class="fas fa-venus text-pink"></i>
+                                                        {% endif %}
+                                                    </h4>
+                                                    <h6 class="card-subtitle mb-2 text-muted">
+                                                        <i class="fas fa-low-vision"></i>
+                                                        {{ post.date }}
+                                                    </h6>
+                                                </div>
+                                                <div class="card-body">
+                                                    <p class="card-text"><span class="text-muted">
                                                     Breed:</span> {# {{ post.owner.dog_set.first.breed.breed_name }} #}
-                                                    {{ post.dog.dog_breed.breed_name }}
-                                                </p>
-                                                <p class="card-text"><span class="text-muted">
-                                                    Age:</span> {# {{ post.owner.dog_set.first.dog_age }} #} {{ post.dog.dog_age }} years old
-                                                </p>
-                                                <p class="card-text"><span class="text-muted">
-                                                    Owner:</span> {{ post.owner.first_name }} {{ post.owner.last_name }}
-                                                </p>
-                                                <p class="card-text"><span class="text-muted">
+                                                        {{ post.dog.dog_breed.breed_name }}
+                                                    </p>
+                                                    <p class="card-text"><span class="text-muted">
+                                                    Age:</span>
+                                                        {# {{ post.owner.dog_set.first.dog_age }} #} {{ post.dog.dog_age }}
+                                                        years old
+                                                    </p>
+                                                    <p class="card-text"><span class="text-muted">
+                                                    Owner:</span>{{ post.owner.first_name }} {{ post.owner.last_name }}
+                                                    </p>
+                                                    <p class="card-text"><span class="text-muted">
                                                     Colors:</span>
-                                                    {% for color in post.dog.dogcolor_set.all %}
-                                                        {{ color.color_name }} {% endfor %}
-                                                </p>
-                                            </div>
-                                            <div class="card-footer">
-                                                <i class="fas fa-map-marker-alt text-warning"></i>
-                                                {{ post.owner.profile.owner_address }}
+                                                        {% for color in post.dog.dogcolor_set.all %}
+                                                            {{ color.color_name }} {% endfor %}
+                                                    </p>
+                                                </div>
+                                                <div class="card-footer">
+                                                    <i class="fas fa-map-marker-alt text-warning"></i>
+                                                    {{ post.owner.profile.owner_address }}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
                                 {% endif %}
 
                             {% endfor %}

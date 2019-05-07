@@ -148,6 +148,8 @@
                     <div class="col-md-9 text-center">
 
                         <div class="p-3">
+                            <h2>{{ dog.dog_name }}</h2>
+                            <hr class="mb-4">
                             <div class="post text-white bg-dark">
                                 <div class="post-image"
                                      style="background-image: url('{{ dog.dog_image.url }}');"></div>
@@ -161,10 +163,22 @@
                                                 <i class="fas fa-venus text-pink"></i>
                                             {% endif %}
                                         </h4>
-                                        <h6 class="card-subtitle mb-2 text-muted">
-                                            <i class="fas fa-paw"></i>
+                                        <p class="card-text">
+                                            <span class="text-muted">Breed:</span>
                                             {{ dog.dog_breed.breed_name }}
-                                        </h6>
+                                        </p>
+                                        <p class="card-text">
+                                            <span class="text-muted">Age:</span>
+                                            {{ dog.dog_age }} years old
+                                        </p>
+                                        <p class="card-text">
+                                            <span class="text-muted">Color:</span>
+                                            {{ dog.color1.color_name }}
+                                        </p>
+                                        <p class="card-text">
+                                            <span class="text-muted">More Info:</span>
+                                            {{ dog.dog_info }}
+                                        </p>
                                     </div>
                                 </div>
                             </div>

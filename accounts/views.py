@@ -1,5 +1,5 @@
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.http import HttpResponse
@@ -130,3 +130,26 @@ def view_profile(req, profile_id):
         'user_profile': user
     }
     return render(req, 'accounts/view-profile.html', context=context)
+
+
+@login_required
+def edit_dog(req, dog_id):
+    dog = Dog.objects.get(id=dog_id)
+    if req.user.id == dog.owner.id:
+        if req.method == 'POST':
+            form = DogRegisterForms(req.POST, instance=dog)
+            if form.is_valid():
+                form.save()
+                messages.success(req, f'Your dog has been update!')
+                return redirect('my_profile')
+        else:
+            form = DogRegisterForms(instance=dog)
+            storage = messages.get_messages(req)
+            storage.used = True
+
+        context = {
+            'form': form
+        }
+        return render(req, 'accounts/edit-dog.html', context=context)
+    else:
+        return  redirect('login')

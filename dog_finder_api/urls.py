@@ -31,6 +31,7 @@ urlpatterns = [
     path('my-profile/edit/', accounts_views.edit_profile, name='edit_profile'),
     path('register/dog/', accounts_views.register_dog, name='dog_register'),
     path('dog/<int:dog_id>/', accounts_views.view_dog, name='view_dog'),
+    path('dog/<int:dog_id>/edit/', accounts_views.edit_dog, name='edit_dog'),
     path('profile/<int:profile_id>/', accounts_views.view_profile, name='view_profile'),
 ]
 

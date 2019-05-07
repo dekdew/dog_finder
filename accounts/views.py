@@ -4,6 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
 
 # Create your views here.
 from accounts.forms import UserRegisterForms, UserUpdateForms, ProfileUpdateForm, DogRegisterForms
@@ -47,6 +48,7 @@ def register_dog(req):
         dog_form = DogRegisterForms()
     context = {'dog_form': dog_form}
     return render(req, 'accounts/dog_register.html', context)
+
 
 def my_login(req):
     context = {}
@@ -113,9 +115,18 @@ def my_profile(req):
 
     return render(req, 'accounts/my-profile.html', context=context)
 
+
 def view_dog(req, dog_id):
     dog = Dog.objects.get(pk=dog_id)
     context = {
         'dog': dog
     }
     return render(req, 'accounts/view-dog.html', context=context)
+
+
+def view_profile(req, profile_id):
+    user = User.objects.get(pk=profile_id)
+    context = {
+        'user_profile': user
+    }
+    return render(req, 'accounts/view-profile.html', context=context)

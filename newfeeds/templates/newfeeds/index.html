@@ -233,7 +233,7 @@
                                                     </p>
                                                     <p class="card-text"><span class="text-muted">
                                                     Owner:</span>
-                                                        <a href="">
+                                                        <a href="{% url 'view_profile' post.owner.id %}">
                                                             {{ post.owner.first_name }} {{ post.owner.last_name }}
                                                         </a>
                                                     </p>

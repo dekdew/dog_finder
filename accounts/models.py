@@ -26,17 +26,10 @@ class Profile(models.Model):
 
 
 class Breed(models.Model):
-    PUG, HUSKY, CORGI = "Pug", "Siberian Husky", "Corgi"
-    BREED = (
-        (PUG, 'Pug'),
-        (HUSKY, 'Siberian Husky'),
-        (CORGI, 'Corgi')
-    )
     breed_name = models.CharField(max_length=100)
 
 
 class DogColor(models.Model):
-
     color_name = models.CharField(max_length=30)
 
 

@@ -124,7 +124,7 @@
                             <div class="mt-4">
                                 <h3 class="title text-capitalize">Update {{ form.dog_name.value }}</h3>
                                 <hr class="mb-4">
-                                <form class="text-left card p-3" action="{% url 'dog_register' %}" method="post">
+                                <form class="text-left card p-3" action="{% url 'edit_dog' dog_id %}" method="post">
                                     {% csrf_token %}
                                     <fieldset class="form-group">
                                         {{ form | crispy }}

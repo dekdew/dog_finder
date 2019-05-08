@@ -47,11 +47,11 @@ def register_dog(req):
             dog.breed = breed
             dogName = dog_form.cleaned_data.get('dog_name')
             dog_form.save()
-            dog_id = Dog.objects.get(dog_name=dogName)
+            dog_id = Dog.objects.get(dog_name=dogName).id
             print(dog_id)
-            qrcode(dog_id.id)
+            qrcode(dog_id)
 
-            return redirect('my_profile')
+            return redirect('view_dog', dog_id=dog_id)
     else:
         dog_form = DogRegisterForms()
     context = {'dog_form': dog_form}
@@ -127,7 +127,8 @@ def my_profile(req):
 def view_dog(req, dog_id):
     dog = Dog.objects.get(pk=dog_id)
     context = {
-        'dog': dog
+        'dog': dog,
+        'dog_id': str(dog.id)
     }
     return render(req, 'accounts/view-dog.html', context=context)
 
@@ -156,7 +157,8 @@ def edit_dog(req, dog_id):
             storage.used = True
 
         context = {
-            'form': form
+            'form': form,
+            'dog_id': dog_id
         }
         return render(req, 'accounts/edit-dog.html', context=context)
     else:

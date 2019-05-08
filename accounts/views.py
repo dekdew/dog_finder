@@ -35,7 +35,7 @@ def register(req):
 def register_dog(req):
     if req.method == 'POST':
         print(req.user.profile)
-        dog_form = DogRegisterForms(req.POST, req.FILES, instance=req.user)
+        dog_form = DogRegisterForms(req.POST, req.FILES)
 
         if dog_form.is_valid():
             dog = dog_form.save(commit=False)

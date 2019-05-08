@@ -27,6 +27,8 @@ class PostModelForm(forms.ModelForm):
 
 
 class PostFoundModelForm(forms.ModelForm):
+    latitude = forms.CharField(widget=forms.TextInput(attrs={'readonly': 'readonly'}))
+    longtitude = forms.CharField(widget=forms.TextInput(attrs={'readonly': 'readonly'}))
 
     class Meta:
         model = Post

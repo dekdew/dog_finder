@@ -20,7 +20,7 @@
 </head>
 <body>
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-shrink" id="mainNav">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
         <a class="navbar-brand js-scroll-trigger" href="{% url 'index' %}">
             <svg x="0px" y="0px" viewBox="0 0 147 26" height="26px">
@@ -82,31 +82,46 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item avatar dropdown">
-                    <a class="nav-link dropdown-toggle text-capitalize" id="navbarDropdownMenuLink-4"
-                       data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">
-                        <img src="{{ user.profile.image.url }}"
-                             class="rounded-circle z-depth-0 border"
-                             alt="avatar image" height="35">
-                        {{ user.username }}
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right dropdown-info"
-                         aria-labelledby="navbarDropdownMenuLink-4">
-                        <a class="dropdown-item" href="{% url 'my_profile' %}">
-                            <i class="fas fa-user"></i>
-                            My Profile
+                {% if user.is_authenticated %}
+                    <li class="nav-item avatar dropdown">
+                        <a class="nav-link dropdown-toggle text-capitalize" id="navbarDropdownMenuLink-4"
+                           data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            <img src="{{ user.profile.image.url }}"
+                                 class="rounded-circle z-depth-0 border"
+                                 alt="avatar image" height="35">
+                            {{ user.username }}
                         </a>
-                        <a class="dropdown-item" href="{% url 'edit_profile' %}">
-                            <i class="fas fa-user-edit"></i>
-                            Edit Profile
-                        </a>
-                        <a class="dropdown-item" href="{% url 'logout' %}">
-                            <i class="fas fa-sign-out-alt"></i>
-                            Log out
-                        </a>
-                    </div>
-                </li>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-info"
+                             aria-labelledby="navbarDropdownMenuLink-4">
+                            <a class="dropdown-item" href="{% url 'my_profile' %}">
+                                <i class="fas fa-user"></i>
+                                My Profile
+                            </a>
+                            <a class="dropdown-item" href="{% url 'edit_profile' %}">
+                                <i class="fas fa-user-edit"></i>
+                                Edit Profile
+                            </a>
+                            <a class="dropdown-item" href="{% url 'logout' %}">
+                                <i class="fas fa-sign-out-alt"></i>
+                                Log out
+                            </a>
+                        </div>
+                    </li>
+                    {#                        <li class="nav-item">#}
+                    {#                            <a class="nav-link" href="{% url 'profile' %}">Profile</a>#}
+                    {#                        </li>#}
+                    {#                        <li class="nav-item">#}
+                    {#                            <a class="nav-link" href="{% url 'logout' %}">Logout</a>#}
+                    {#                        </li>#}
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Log in</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'register' %}">Sign Up</a>
+                    </li>
+                {% endif %}
             </ul>
 
         </div>

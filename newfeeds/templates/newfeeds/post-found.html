@@ -127,8 +127,10 @@
                                 <form class="text-left card p-3" action="{% url 'post-found' %}" method="post">
                                     {% csrf_token %}
                                     <fieldset class="form-group">
-                                        {{ post_form | crispy }}
                                         {{ founder_form | crispy }}
+                                        {{ post_form | crispy }}
+
+                                        <div id='map' style="height: 20em"></div>
 
                                     </fieldset>
                                     <div class="form-group">
@@ -144,3 +146,22 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
+</body>
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+<script src="{% static 'js/grayscale.js' %}"></script>
+
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.54.0/mapbox-gl.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.54.0/mapbox-gl.css' rel='stylesheet'/>
+
+<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.2.0/mapbox-gl-geocoder.min.js'></script>
+<link rel='stylesheet'
+      href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.2.0/mapbox-gl-geocoder.css'
+      type='text/css'/>
+
+<script src="{% static 'js/map.js' %}"></script>
+
+</html>

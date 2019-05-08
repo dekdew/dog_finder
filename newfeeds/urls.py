@@ -5,8 +5,8 @@ from newfeeds.views import PostListView
 
 urlpatterns = [
     path('', PostListView.as_view(), name='index'),
-    path('post-create/', views.create_post, name='post-create'),
+    path('post/create/lost', views.create_post, name='post-create'),
     path('about/', views.about, name='about'),
-    path('post-found/', views.create_found, name='post-found')
+    path('post/create/found', views.create_found, name='post-found')
 
 ]

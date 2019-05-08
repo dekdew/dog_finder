@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
 
-from accounts.models import Dog
+from accounts.models import Dog, DogFound
 
 MALE, FEMALE = 'Male', 'Female'
 
@@ -33,8 +33,9 @@ class Post(models.Model):
         (DOG_FOUND, '1')
     )
     types = models.CharField(choices=TYPES, null=False, blank=False, max_length=2)
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
-    dog = models.ForeignKey(Dog, on_delete=models.CASCADE, default=1)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    dog = models.ForeignKey(Dog, on_delete=models.CASCADE, default=1, null=True)
+    founder = models.ForeignKey(DogFound, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.post_title

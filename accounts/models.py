@@ -5,6 +5,7 @@ from django.db import models
 # Create your models here
 
 
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(default='default.jpg', upload_to='profile_img')
@@ -61,17 +62,21 @@ class Dog(models.Model):
     dog_status = models.CharField(choices=STATUS, default='Normal', max_length=20)
 
 
-    def __str__(self):
-        return f'{self.owner.username} {self.dog_name} Profile'
+class DogFound(models.Model):
+    founder_name = models.CharField(max_length=255)
+    founder_info = models.TextField()
+    founder_phone = models.CharField(max_length=20)
 
-    def save(self, *args, **kwargs):
-        super(Dog, self).save(*args, **kwargs)
+    MALE, FEMALE = 'Male', 'Female'
+    GENDER = (
+        (MALE, 'Male'),
+        (FEMALE, 'Female')
+    )
 
-        img = Image.open(self.dog_image.path)
+    dog_gender = models.CharField(choices=GENDER, default=MALE, max_length=10)
+    dog_breed = models.ForeignKey(Breed, on_delete=models.CASCADE, default=1)
+    dog_color = models.ForeignKey(DogColor, on_delete=models.CASCADE, default=1)
+    dog_image = models.ImageField(default='default-dog.jpg', upload_to='dog_img')
 
-        if img.height > 500 or img.width > 700:
-            output_size = (500, 500)
-            img.thumbnail(output_size)
-            img.save(self.dog_image.path)
 
 

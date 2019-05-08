@@ -34,7 +34,9 @@ def register(req):
 @login_required
 def register_dog(req):
     if req.method == 'POST':
-        dog_form = DogRegisterForms(req.POST)
+        print(req.user.profile)
+        dog_form = DogRegisterForms(req.POST, req.FILES, instance=req.user)
+
         if dog_form.is_valid():
             dog = dog_form.save(commit=False)
             dog.owner = req.user

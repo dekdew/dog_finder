@@ -170,7 +170,7 @@
 
                                 {% for dog in dog_list %}
                                     <div class="col-md-6 p-3">
-                                        <div class="post text-white bg-dark">
+                                        <div class="post text-white bg-dark border {% if dog.dog_status == 'Lost' %}border-danger{% else %}border-warning{% endif %}">
                                             <div class="post-image"
                                                  style="background-image: url('{{ dog.dog_image.url }}');"></div>
                                             <div class="card bg-dark text-left text-white">

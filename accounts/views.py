@@ -45,13 +45,10 @@ def register_dog(req):
             breed = Breed.objects.filter(breed_name=dog_form.cleaned_data.get('dog_breed'))
             print(breed)
             dog.breed = breed
-            dogName = dog_form.cleaned_data.get('dog_name')
             dog_form.save()
-            dog_id = Dog.objects.get(dog_name=dogName).id
-            print(dog_id)
-            qrcode(dog_id)
+            qrcode(dog.id)
 
-            return redirect('view_dog', dog_id=dog_id)
+            return redirect('view_dog', dog_id=dog.id)
     else:
         dog_form = DogRegisterForms()
     context = {'dog_form': dog_form}

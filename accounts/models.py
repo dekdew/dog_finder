@@ -61,6 +61,16 @@ class Dog(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
     dog_status = models.CharField(choices=STATUS, default='Normal', max_length=20)
 
+    def save(self, *args, **kwargs):
+        super(Dog, self).save(*args, **kwargs)
+
+        img = Image.open(self.dog_image.path)
+
+        if img.height > 500 or img.width > 500:
+            output_size = (500, 500)
+            img.thumbnail(output_size)
+            img.save(self.image.path)
+
 
 class DogFound(models.Model):
     founder_name = models.CharField(max_length=255)

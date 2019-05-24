@@ -39,6 +39,14 @@ class Post(models.Model):
     def __str__(self):
         return self.post_title
 
+class Hospital(models.Model):
+    hospital_name = models.CharField(max_length=255)
+    hospital_phone = models.CharField(max_length=15)
+    hospital_address = models.TextField()
+    hospital_area = models.CharField(max_length=255)
+    latitude = models.FloatField()
+    longitude = models.FloatField()
+
 
 # class DogFound(models.Model):
 #     founder_name = models.CharField(max_length=50)

@@ -7,8 +7,8 @@
       "hospital_phone": "02-2591778",
       "hospital_address": "303 สุขุมวิท22 แขวงคลองตัน เขตคลองเตย",
       "hospital_area": "เขต คลองเตย",
-      "latitude": "13.727259",
-      "longitude": "100.565010",
+      "latitude": 13.727259,
+      "longitude": 100.565010
     }
   },
   {
@@ -19,8 +19,8 @@
       "hospital_phone": "02-6722868",
       "hospital_address": "4040 ถ.พระราม4 คลองตัน คลองเตย",
       "hospital_area": "เขต คลองเตย",
-      "latitude": "13.713905",
-      "longitude": "100.579497",
+      "latitude": 13.713905,
+      "longitude": 100.579497
     }
   },
   {
@@ -31,8 +31,8 @@
       "hospital_phone": "02-4371062",
       "hospital_address": "484/218 ถ.เจริญนคร คลองต้นไทร คลองสาน",
       "hospital_area": "เขต คลองสาน",
-      "latitude": "13.721318",
-      "longitude": "100.508745",
+      "latitude": 13.721318,
+      "longitude": 100.508745
     }
   },
   {
@@ -43,8 +43,8 @@
       "hospital_phone": "02-4373375",
       "hospital_address": "298-300 ถ.สมเด็จเจ้าพระยา คลองสาน",
       "hospital_area": "เขต คลองสาน",
-      "latitude": "13.728836",
-      "longitude": "100.500641",
+      "latitude": 13.728836,
+      "longitude": 100.500641
     }
   },
   {
@@ -55,8 +55,8 @@
       "hospital_phone": "02-9553037",
       "hospital_address": "55/8 ถ.พระยาสุเรนทร์ บางชัน คลองสามวา",
       "hospital_area": "เขต คลองสามวา",
-      "latitude": "13.671977",
-      "longitude": "100.483720",
+      "latitude": 13.671977,
+      "longitude": 100.483720
     }
   },
   {
@@ -67,8 +67,8 @@
       "hospital_phone": "02-9191162",
       "hospital_address": "3/9 ม.3 ซ.รามอินทรา109 ถ.พระยาสุเรนทร์",
       "hospital_area": "เขต คลองสามวา",
-      "latitude": "13.828797",
-      "longitude": "100.699198",
+      "latitude": 13.828797,
+      "longitude": 100.699198
     }
   },
   {
@@ -79,8 +79,8 @@
       "hospital_phone": "02-9434538",
       "hospital_address": "กม.8  127 ซ.วัดคู้บอน ถ.รามอินทรา คันนายาว",
       "hospital_area": "เขต คันนายาว",
-      "latitude": "13.846865",
-      "longitude": "100.663847",
+      "latitude": 13.846865,
+      "longitude": 100.663847
     }
   },
   {
@@ -91,8 +91,8 @@
       "hospital_phone": "02-4765880",
       "hospital_address": "8/316 ม.6 ถ.พระราม2 บางมด จอมทอง",
       "hospital_area": "เขต จอมทอง",
-      "latitude": "13.679277",
-      "longitude": "100.466863",
+      "latitude": 13.679277,
+      "longitude": 100.466863
     }
   },
   {
@@ -103,8 +103,8 @@
       "hospital_phone": "02-4159791",
       "hospital_address": "4/4 ม.4 ถ.เอกชัย บางขุนเทียน จอมทอง",
       "hospital_area": "เขต จอมทอง",
-      "latitude": "13.696534",
-      "longitude": "100.457950",
+      "latitude": 13.696534,
+      "longitude": 100.457950
     }
   },
   {
@@ -115,8 +115,8 @@
       "hospital_phone": "02-9538085",
       "hospital_address": "99/176 ถนน เทศบาลรังสฤษดิ์เหนือ ลาดยาว จตุจักร",
       "hospital_area": "เขต จตุจักร",
-      "latitude": "13.840579",
-      "longitude": "100.544334",
+      "latitude": 13.840579,
+      "longitude": 100.544334
     }
   },
   {
@@ -127,8 +127,8 @@
       "hospital_phone": "02-5802087",
       "hospital_address": "13 ถนน เทศบาลสงเคราะห์ ลาดยาว จตุจักร",
       "hospital_area": "เขต จตุจักร",
-      "latitude": "13.840005",
-      "longitude": "100.545261",
+      "latitude": 13.840005,
+      "longitude": 100.545261
     }
   },
   {
@@ -139,8 +139,8 @@
       "hospital_phone": "02-5884907",
       "hospital_address": "31/97 ถ.งามวงศ์วาน ทุ่งสองห้อง ดอนเมือง",
       "hospital_area": "เขต ดอนเมือง",
-      "latitude": "13.863654",
-      "longitude": "100.556208",
+      "latitude": 13.863654,
+      "longitude": 100.556208
     }
   },
   {
@@ -151,8 +151,8 @@
       "hospital_phone": "02 579 5635",
       "hospital_address": "10/17 วิภาวดี58 ตลาดบางเขน บางเขน ",
       "hospital_area": "เขต บางเขน",
-      "latitude": "13.903715",
-      "longitude": "100.585927",
+      "latitude": 13.903715,
+      "longitude": 100.585927
     }
   },
   {
@@ -163,8 +163,8 @@
       "hospital_phone": "02-5664726",
       "hospital_address": "234/54 ถ.สรณคมน์ สีกัน ดอนเมือง",
       "hospital_area": "เขต ดอนเมือง",
-      "latitude": "13.929233",
-      "longitude": "100.597895",
+      "latitude": 13.929233,
+      "longitude": 100.597895
     }
   },
   {
@@ -175,8 +175,8 @@
       "hospital_phone": "02-5570442",
       "hospital_address": "129/8-9 ซ.17 เคหะร่มเกล้า ลาดกระบัง",
       "hospital_area": "เขต ลาดกระบัง",
-      "latitude": "13.774724",
-      "longitude": "100.733040",
+      "latitude": 13.774724,
+      "longitude": 100.733040
     }
   },
   {
@@ -187,8 +187,8 @@
       "hospital_phone": "02-7391170",
       "hospital_address": "228/26 ถ.อ่อนนุช ลาดกระบัง",
       "hospital_area": "เขต ลาดกระบัง",
-      "latitude": "13.722786",
-      "longitude": "100.784619",
+      "latitude": 13.722786,
+      "longitude": 100.784619
     }
   },
   {
@@ -199,20 +199,20 @@
       "hospital_phone": "02-3615123",
       "hospital_address": "55/28 ซ.เปรมฤทัย5/1 สุขุมวิท103 ประเวศ",
       "hospital_area": "เขต ประเวศ",
-      "latitude": "13.825628",
-      "longitude": "100.531449",
+      "latitude": 13.825628,
+      "longitude": 100.531449
     }
   },
   {
     "model": "newfeeds.Hospital",
     "pk": 18,
     "fields": {
-      "hospital_name": "คลินิกรักษาสัตว์,
+      "hospital_name": "คลินิกรักษาสัตว์",
       "hospital_phone": "02-2474010",
       "hospital_address": "1/28 ถ.ดินแดง สามเสนใน พญาไท",
       "hospital_area": "เขต พญาไท",
-      "latitude": "13.794992",
-      "longitude": "100.550096",
+      "latitude": 13.794992,
+      "longitude": 100.550096
     }
   },
   {
@@ -223,8 +223,8 @@
       "hospital_phone": "02-7303577",
       "hospital_address": "151 สุขุมวิท93 ถ.สุขุมวิท บางจาก พระโขนง",
       "hospital_area": "เขต พระโขนง",
-      "latitude": "13.699575",
-      "longitude": "100.606147",
+      "latitude": 13.699575,
+      "longitude": 100.606147
     }
   },
   {
@@ -235,8 +235,8 @@
       "hospital_phone": "02-5405745",
       "hospital_address": "68/42 ซ.เคหะชุมชนรามคำแหง มีนบุรี",
       "hospital_area": "เขต มีนบุรี",
-      "latitude": "13.803907",
-      "longitude": "100.729422",
+      "latitude": 13.803907,
+      "longitude": 100.729422
     }
   }
 ]

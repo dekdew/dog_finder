@@ -7,6 +7,7 @@ from django.views.generic import ListView
 
 
 from accounts.models import Dog, DogFound, Breed, DogColor
+from newfeeds.models import Hospital
 from newfeeds.forms import PostModelForm, PostFoundModelForm, FounderModelForm
 
 post_list = [
@@ -128,3 +129,9 @@ def about(req):
 
 def post(req):
     return render(req, 'newfeeds/post.html', {'title': 'Post About'})
+
+
+def hospital(req):
+    hospital_list = Hospital.objects.all()
+    context = {'hospital_list': hospital_list}
+    return render(req, 'newfeeds/hospital.html', context=context)

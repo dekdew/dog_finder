@@ -67,6 +67,17 @@ class PostListView(ListView):
     ordering = ['-date']
 
 
+def matching(req):
+    gender = 'Male'
+    breed = 27
+    color = 1
+
+    dog_found = DogFound.objects.filter(dog_gender=gender).filter(dog_color=color).filter(dog_breed=breed)
+    print(dog_found)
+    return redirect('index')
+
+
+
 @login_required
 def create_post(req):
     if req.method == 'POST':

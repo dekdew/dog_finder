@@ -127,6 +127,7 @@
         </div>
     </div>
 </nav>
+
 <div class="profile-page">
     <div class="page-header header-filter" data-parallax="true"></div>
     <div class="main main-raised">
@@ -136,12 +137,13 @@
                     <div class="col-md-6 ml-auto mr-auto">
                         <div class="profile">
                             <div class="mt-4">
-                                <h3 class="title text-capitalize">Create New Post</h3>
+                                <h3 class="title text-capitalize">Create New Found</h3>
                                 <hr class="mb-4">
-                                <form class="text-left card p-3" action="{% url 'post-create' %}" method="post">
+                                <form class="text-left card p-3" action="{% url 'post-found' %}" method="post">
                                     {% csrf_token %}
                                     <fieldset class="form-group">
-                                        {{ form | crispy }}
+                                        {{ founder_form | crispy }}
+                                        {{ post_form | crispy }}
 
                                         <div id='map' style="height: 20em"></div>
 
@@ -165,7 +167,7 @@
 <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
 <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
-<script src="{% static 'js/grayscale.min.js' %}"></script>
+<script src="{% static 'js/grayscale.js' %}"></script>
 
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.54.0/mapbox-gl.js'></script>
 <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.54.0/mapbox-gl.css' rel='stylesheet'/>
@@ -176,6 +178,5 @@
       type='text/css'/>
 
 <script src="{% static 'js/map.js' %}"></script>
-
 
 </html>

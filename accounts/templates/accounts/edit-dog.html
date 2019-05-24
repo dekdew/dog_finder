@@ -20,7 +20,7 @@
 </head>
 <body>
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-shrink" id="mainNav">
     <div class="container">
         <a class="navbar-brand js-scroll-trigger" href="{% url 'index' %}">
             <svg x="0px" y="0px" viewBox="0 0 147 26" height="26px">
@@ -82,51 +82,37 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                {% if user.is_authenticated %}
-                    <li class="nav-item avatar dropdown">
-                        <a class="nav-link dropdown-toggle text-capitalize" id="navbarDropdownMenuLink-4"
-                           data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false">
-                            <img src="{{ user.profile.image.url }}"
-                                 class="rounded-circle z-depth-0 border"
-                                 alt="avatar image" height="35">
-                            {{ user.username }}
+                <li class="nav-item avatar dropdown">
+                    <a class="nav-link dropdown-toggle text-capitalize" id="navbarDropdownMenuLink-4"
+                       data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        <img src="{{ user.profile.image.url }}"
+                             class="rounded-circle z-depth-0 border"
+                             alt="avatar image" height="35">
+                        {{ user.username }}
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-info"
+                         aria-labelledby="navbarDropdownMenuLink-4">
+                        <a class="dropdown-item" href="{% url 'my_profile' %}">
+                            <i class="fas fa-user"></i>
+                            My Profile
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-info"
-                             aria-labelledby="navbarDropdownMenuLink-4">
-                            <a class="dropdown-item" href="{% url 'my_profile' %}">
-                                <i class="fas fa-user"></i>
-                                My Profile
-                            </a>
-                            <a class="dropdown-item" href="{% url 'edit_profile' %}">
-                                <i class="fas fa-user-edit"></i>
-                                Edit Profile
-                            </a>
-                            <a class="dropdown-item" href="{% url 'logout' %}">
-                                <i class="fas fa-sign-out-alt"></i>
-                                Log out
-                            </a>
-                        </div>
-                    </li>
-                    {#                        <li class="nav-item">#}
-                    {#                            <a class="nav-link" href="{% url 'profile' %}">Profile</a>#}
-                    {#                        </li>#}
-                    {#                        <li class="nav-item">#}
-                    {#                            <a class="nav-link" href="{% url 'logout' %}">Logout</a>#}
-                    {#                        </li>#}
-                {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'login' %}">Log in</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'register' %}">Sign Up</a>
-                    </li>
-                {% endif %}
+                        <a class="dropdown-item" href="{% url 'edit_profile' %}">
+                            <i class="fas fa-user-edit"></i>
+                            Edit Profile
+                        </a>
+                        <a class="dropdown-item" href="{% url 'logout' %}">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Log out
+                        </a>
+                    </div>
+                </li>
             </ul>
 
         </div>
     </div>
 </nav>
+
 <div class="profile-page">
     <div class="page-header header-filter" data-parallax="true"></div>
     <div class="main main-raised">
@@ -136,19 +122,17 @@
                     <div class="col-md-6 ml-auto mr-auto">
                         <div class="profile">
                             <div class="mt-4">
-                                <h3 class="title text-capitalize">Create New Post</h3>
+                                <h3 class="title text-capitalize">Update {{ form.dog_name.value }}</h3>
                                 <hr class="mb-4">
-                                <form class="text-left card p-3" action="{% url 'post-create' %}" method="post">
+                                <form class="text-left card p-3" action="{% url 'edit_dog' dog_id %}" method="post">
                                     {% csrf_token %}
                                     <fieldset class="form-group">
                                         {{ form | crispy }}
 
-                                        <div id='map' style="height: 20em"></div>
-
                                     </fieldset>
                                     <div class="form-group">
                                         <button class="btn btn-warning text-white btn-block" type="submit">
-                                            Create Post
+                                            Update
                                         </button>
                                     </div>
                                 </form>
@@ -166,16 +150,4 @@
 <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
 <script src="{% static 'js/grayscale.min.js' %}"></script>
-
-<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.54.0/mapbox-gl.js'></script>
-<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.54.0/mapbox-gl.css' rel='stylesheet'/>
-
-<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.2.0/mapbox-gl-geocoder.min.js'></script>
-<link rel='stylesheet'
-      href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.2.0/mapbox-gl-geocoder.css'
-      type='text/css'/>
-
-<script src="{% static 'js/map.js' %}"></script>
-
-
 </html>

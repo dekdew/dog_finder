@@ -1,14 +1,16 @@
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 
+
 # Create your views here.
 from accounts.forms import UserRegisterForms, UserUpdateForms, ProfileUpdateForm, DogRegisterForms
 from accounts.models import Breed, Dog, DogColor
+from generate_QR import qrcode
 
 
 def register(req):
@@ -34,16 +36,19 @@ def register(req):
 @login_required
 def register_dog(req):
     if req.method == 'POST':
-        dog_form = DogRegisterForms(req.POST)
+        print(req.user.profile)
+        dog_form = DogRegisterForms(req.POST, req.FILES)
+
         if dog_form.is_valid():
             dog = dog_form.save(commit=False)
             dog.owner = req.user
             breed = Breed.objects.filter(breed_name=dog_form.cleaned_data.get('dog_breed'))
             print(breed)
             dog.breed = breed
-
             dog_form.save()
-            return redirect('my_profile')
+            qrcode(dog.id)
+
+            return redirect('view_dog', dog_id=dog.id)
     else:
         dog_form = DogRegisterForms()
     context = {'dog_form': dog_form}
@@ -119,7 +124,8 @@ def my_profile(req):
 def view_dog(req, dog_id):
     dog = Dog.objects.get(pk=dog_id)
     context = {
-        'dog': dog
+        'dog': dog,
+        'dog_id': str(dog.id)
     }
     return render(req, 'accounts/view-dog.html', context=context)
 
@@ -130,3 +136,37 @@ def view_profile(req, profile_id):
         'user_profile': user
     }
     return render(req, 'accounts/view-profile.html', context=context)
+
+
+@login_required
+def edit_dog(req, dog_id):
+    dog = Dog.objects.get(id=dog_id)
+    if req.user.id == dog.owner.id:
+        if req.method == 'POST':
+            form = DogRegisterForms(req.POST, instance=dog)
+            if form.is_valid():
+                form.save()
+                messages.success(req, f'Your dog has been update!')
+                return redirect('my_profile')
+        else:
+            form = DogRegisterForms(instance=dog)
+            storage = messages.get_messages(req)
+            storage.used = True
+
+        context = {
+            'form': form,
+            'dog_id': dog_id
+        }
+        return render(req, 'accounts/edit-dog.html', context=context)
+    else:
+        return redirect('login')
+
+
+@login_required
+def delete_dog(req, dog_id):
+    dog = Dog.objects.get(id=dog_id)
+    if req.user.id == dog.owner.id:
+        dog.delete()
+        return redirect('my_profile')
+    else:
+        return redirect('login')

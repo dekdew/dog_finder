@@ -68,17 +68,6 @@ class PostListView(ListView):
     ordering = ['-date']
 
 
-def matching(req):
-    gender = 'Male'
-    breed = 27
-    color = 1
-
-    dog_found = DogFound.objects.filter(dog_gender=gender).filter(dog_color=color).filter(dog_breed=breed)
-    print(dog_found)
-    return redirect('index')
-
-
-
 @login_required
 def create_post(req):
     if req.method == 'POST':
@@ -86,13 +75,30 @@ def create_post(req):
         if form.is_valid():
             post_form = form.save(commit=False)
             post_form.owner = req.user
-            print('eiei  ' + str(form.cleaned_data.get('dog_name').dog_name))
             Dog.objects.filter(dog_name=form.cleaned_data.get('dog_name').dog_name, owner=req.user).update(
                 dog_status='Lost')
             post_form.dog = Dog.objects.get(dog_name=form.cleaned_data.get('dog_name').dog_name)
             post_form.types = 0
             form.save()
-            return redirect('index')
+
+            dog = form.cleaned_data.get('dog_name')
+            gender = dog.dog_gender
+            breed = dog.dog_breed
+            color = dog.color1
+
+            dog_matched_list = DogFound.objects.filter(dog_gender=gender).filter(dog_color=color).filter(dog_breed=breed)
+
+            post_matched_list = []
+
+            for dog_matched in range(len(dog_matched_list)):
+                print('>>>', dog_matched_list[dog_matched])
+                post_matched_list.append(Post.objects.get(founder=dog_matched_list[dog_matched]))
+
+            if post_matched_list:
+                context = {'post_matched_list': post_matched_list}
+                return render(req, 'newfeeds/matched.html', context=context)
+            else:
+                return redirect('index')
     else:
 
         form = PostModelForm(user=req.user)
@@ -112,7 +118,7 @@ def create_found(req):
 
             f.save()
             p.types = 1
-            p.founder = DogFound.objects.get(founder_name=founder_form.cleaned_data.get('founder_name'))
+            p.founder = DogFound.objects.get(id=f.id)
             post_form.save()
             founder_form.save()
             return redirect('index')
